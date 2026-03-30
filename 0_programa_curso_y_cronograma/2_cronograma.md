@@ -18,7 +18,6 @@ Abril 25.
 Mayo: 2, 9, 16, 23, 30. 
 
 
-A continuación, presento la comparación de ambos cronogramas en formato de tabla, detallando las diferencias en intensidad, frecuencia y ubicación geográfica según lo solicitado y el programa base.
 
 ### **Cronograma 1: Caucasia (Intensivo Semanal)**
 *Modalidad: 4 días a la semana (Lunes a Jueves), 3 horas por sesión, con semanas de descanso intercaladas.*
