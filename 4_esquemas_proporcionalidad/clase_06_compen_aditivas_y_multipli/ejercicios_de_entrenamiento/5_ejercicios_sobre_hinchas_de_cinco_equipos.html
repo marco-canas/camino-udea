@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Taller de Razonamiento: Fracciones del Resto mediante Diagramas Rectangulares</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 2cm;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 11pt;
+        }
+        h1 {
+            text-align: center;
+            color: #1a365d;
+            text-transform: uppercase;
+            font-size: 16pt;
+            margin-bottom: 5px;
+            border-bottom: 2px solid #2b6cb0;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2b6cb0;
+            font-size: 13pt;
+            margin-top: 30px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+            page-break-after: avoid;
+        }
+        .intro-box {
+            background-color: #f7fafc;
+            border-left: 4px solid #3182ce;
+            padding: 12px;
+            margin-bottom: 25px;
+            border-radius: 0 4px 4px 0;
+            font-size: 10pt;
+            text-align: justify;
+        }
+        .exercise-container {
+            margin-bottom: 28px;
+            page-break-inside: avoid;
+        }
+        .context {
+            font-weight: 500;
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+        .context ul {
+            margin-top: 4px;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+        .question-block {
+            margin-left: 15px;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-weight: bold;
+            color: #4a5568;
+            margin-bottom: 4px;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin-top: 4px;
+            margin-bottom: 8px;
+            padding-left: 10px;
+        }
+        .options span {
+            font-size: 10.5pt;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        .answers-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .answers-list li {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e2e8f0;
+            page-break-inside: avoid;
+            text-align: justify;
+        }
+        .correct {
+            font-weight: bold;
+            color: #2b6cb0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Taller de Razonamiento: Fracciones del Resto</h1>
+    
+    <div class="intro-box">
+        <strong>Estrategia Visual Sugerida:</strong> Para resolver estos problemas con facilidad, dibuja un gran rectángulo que represente el 100% del universo. Trázale una línea por la mitad para separar el primer 50%. Al 50% restante (el resto), trázale otra división por la mitad; notarás inmediatamente que este nuevo bloque equivale al 25% del total del universo. Ubica los datos numéricos conocidos dentro de estas fracciones visuales para deducir el valor de cada bloque y resolver el problema sin necesidad de largas ecuaciones algebraicas.
+    </div>
+
+    <h2>Parte 1: Banco de Problemas</h2>
+
+    <div class="exercise-container">
+        <div class="context"><strong>Contexto 1.</strong> La totalidad de asistentes a un encuentro deportivo están repartidos así (cada asistente es hincha de un único equipo):
+            <ul>
+                <li>I. El 50% son hinchas de los Leones.</li>
+                <li>II. El 50% del resto son hinchas de los Tigres.</li>
+                <li>III. Los hinchas de los Caimanes son el doble de los de las Panteras.</li>
+                <li>IV. Los hinchas de las Águilas son el mismo número que el de los Caimanes.</li>
+                <li>V. Los hinchas de las Panteras son 1000.</li>
+            </ul>
+        </div>
+        <div class="question-block">
+            <div class="question-text">1.1. El número total de asistentes al encuentro fue:</div>
+            <div class="options">
+                <span>(a) 20000</span>
+                <span>(b) 22000</span>
+                <span>(c) 25000</span>
+                <span>(d) 28000</span>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question-text">1.2. El porcentaje del total de asistentes que son hinchas de las Águilas es:</div>
+            <div class="options">
+                <span>(a) 8%</span>
+                <span>(b) 10%</span>
+                <span>(c) 12%</span>
+                <span>(d) 16%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-container">
+        <div class="context"><strong>Contexto 2.</strong> Los fondos recolectados en una feria benéfica escolar se distribuyeron para diferentes proyectos de la siguiente manera:
+            <ul>
+                <li>I. El 50% se asignó a la remodelación de la biblioteca de la institución.</li>
+                <li>II. El 50% del resto se destinó a la compra de implementos para los laboratorios de ciencias.</li>
+                <li>III. El presupuesto restante se dividió entre informática, artes y música.</li>
+                <li>IV. Los fondos para informática duplican a los de música, y artes recibe lo mismo que informática.</li>
+                <li>V. El dinero asignado al proyecto de música fue de $800.</li>
+            </ul>
+        </div>
+        <div class="question-block">
+            <div class="question-text">2.1. El monto total de los fondos recolectados en la feria escolar fue:</div>
+            <div class="options">
+                <span>(a) $12000</span>
+                <span>(b) $14000</span>
+                <span>(c) $16000</span>
+                <span>(d) $18000</span>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question-text">2.2. El porcentaje del dinero total de la feria que fue destinado al proyecto de artes es:</div>
+            <div class="options">
+                <span>(a) 5%</span>
+                <span>(b) 8%</span>
+                <span>(c) 10%</span>
+                <span>(d) 12%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-container">
+        <div class="context"><strong>Contexto 3.</strong> Un gran inventario de libros en una librería municipal se encuentra clasificado bajo las siguientes condiciones exclusivas:
+            <ul>
+                <li>I. La mitad (50%) de todos los libros corresponde al género de Literatura de Ficción.</li>
+                <li>II. El 50% de los libros restantes pertenece a textos de Ciencias Exactas e Ingeniería.</li>
+                <li>III. Los textos de Historia duplican en cantidad a los libros de Filosofía.</li>
+                <li>IV. Los libros de Arte igualan en cantidad a los textos de Historia.</li>
+                <li>V. La sección de Filosofía cuenta exactamente con 600 volúmenes en los estantes.</li>
+            </ul>
+        </div>
+        <div class="question-block">
+            <div class="question-text">3.1. La cantidad total de libros que posee el inventario de la librería es:</div>
+            <div class="options">
+                <span>(a) 9600</span>
+                <span>(b) 10500</span>
+                <span>(c) 12000</span>
+                <span>(d) 15000</span>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question-text">3.2. El porcentaje del inventario total que representan los libros del área de Arte es:</div>
+            <div class="options">
+                <span>(a) 10%</span>
+                <span>(b) 12.5%</span>
+                <span>(c) 15%</span>
+                <span>(d) 20%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="exercise-container">
+        <div class="context"><strong>Contexto 4.</strong> Una empresa de tecnología analiza el total de sus servidores en la nube para auditorías de seguridad, encontrando los siguientes datos:
+            <ul>
+                <li>I. El 50% de las bases de datos están alojadas en servidores del proveedor Alpha.</li>
+                <li>II. El 50% del resto de las bases de datos se encuentran en los servidores del proveedor Beta.</li>
+                <li>III. El remanente está distribuido entre los proveedores Gamma, Delta y Epsilon.</li>
+                <li>IV. Las bases de datos en Gamma son el doble que las de Epsilon, y Delta aloja tantas como Gamma.</li>
+                <li>V. El proveedor Epsilon cuenta con 400 bases de datos de la empresa.</li>
+            </ul>
+        </div>
+        <div class="question-block">
+            <div class="question-text">4.1. El número total de bases de datos auditadas en la empresa es:</div>
+            <div class="options">
+                <span>(a) 6400</span>
+                <span>(b) 7200</span>
+                <span>(c) 8000</span>
+                <span>(d) 9600</span>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question-text">4.2. El porcentaje del total de las bases de datos corporativas que administra Delta es:</div>
+            <div class="options">
+                <span>(a) 8%</span>
+                <span>(b) 10%</span>
+                <span>(c) 12.5%</span>
+                <span>(d) 16%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-container">
+        <div class="context"><strong>Contexto 5.</strong> La producción diaria de una fábrica de calzado se distribuye para la exportación y el comercio nacional bajo la siguiente estructura:
+            <ul>
+                <li>I. El 50% de los zapatos producidos se despacha directamente hacia el mercado Europeo.</li>
+                <li>II. El 50% del resto de la producción se envía a los distribuidores de América del Norte.</li>
+                <li>III. El stock restante se reparte entre los mercados de Colombia, Brasil y Argentina.</li>
+                <li>IV. Las unidades destinadas a Colombia duplican a las de Argentina, y Brasil recibe lo mismo que Colombia.</li>
+                <li>V. Las unidades enviadas hacia el mercado de Argentina corresponden a 500 pares de zapatos.</li>
+            </ul>
+        </div>
+        <div class="question-block">
+            <div class="question-text">5.1. La producción total de pares de zapatos que fabrica la empresa al día es:</div>
+            <div class="options">
+                <span>(a) 8000</span>
+                <span>(b) 10000</span>
+                <span>(c) 12000</span>
+                <span>(d) 14000</span>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question-text">5.2. El porcentaje del total de la producción diaria que se comercializa en Brasil es:</div>
+            <div class="options">
+                <span>(a) 6%</span>
+                <span>(b) 10%</span>
+                <span>(c) 12.5%</span>
+                <span>(d) 15%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-container">
+        <div class="context"><strong>Contexto 6.</strong> Una gran multinacional clasifica el total de sus empleados de la sede central según su área de desempeño profesional:
+            <ul>
+                <li>I. La mitad exacta (50%) de la nómina trabaja en las áreas operativas de Producción.</li>
+                <li>II. El 50% del resto del personal pertenece al departamento de Ventas y Mercadeo.</li>
+                <li>III. Los empleados de Tecnología son el doble de los que trabajan en Talento Humano.</li>
+                <li>IV. El personal del departamento de Finanzas es numéricamente igual al del equipo de Tecnología.</li>
+                <li>V. El equipo de Talento Humano está integrado por 150 profesionales.</li>
+            </ul>
+        </div>
+        <div class="question-block">
+            <div class="question-text">6.1. La cantidad total de empleados que trabajan en la sede de la multinacional es:</div>
+            <div class="options">
+                <span>(a) 2400</span>
+                <span>(b) 3000</span>
+                <span>(c) 3200</span>
+                <span>(d) 3600</span>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question-text">6.2. El porcentaje de empleados de la multinacional que corresponden al área de Finanzas es:</div>
+            <div class="options">
+                <span>(a) 8%</span>
+                <span>(b) 10%</span>
+                <span>(c) 12%</span>
+                <span>(d) 16%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-container">
+        <div class="context"><strong>Contexto 7.</strong> Un agricultor organiza las hectáreas cultivables de su finca para la producción de diferentes alimentos de la región:
+            <ul>
+                <li>I. El 50% del terreno total de la finca está sembrado con cultivos de café.</li>
+                <li>II. El 50% del resto del terreno cultivable se ha dedicado a la siembra de maíz.</li>
+                <li>III. Las hectáreas destinadas a frutales duplican en tamaño a las destinadas a hortalizas.</li>
+                <li>IV. Las tierras para el cultivo de cacao tienen la misma extensión que las tierras de los frutales.</li>
+                <li>V. El cultivo de hortalizas ocupa un espacio exacto de 12 hectáreas en la finca.</li>
+            </ul>
+        </div>
+        <div class="question-block">
+            <div class="question-text">7.1. La extensión total de la finca del agricultor, en hectáreas, es:</div>
+            <div class="options">
+                <span>(a) 180</span>
+                <span>(b) 192</span>
+                <span>(c) 210</span>
+                <span>(d) 240</span>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question-text">7.2. El porcentaje del terreno total de la finca que está ocupado por plantaciones de cacao es:</div>
+            <div class="options">
+                <span>(a) 10%</span>
+                <span>(b) 12.5%</span>
+                <span>(c) 15%</span>
+                <span>(d) 20%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="exercise-container">
+        <div class="context"><strong>Contexto 8.</strong> Un hospital analiza los expedientes clínicos de la totalidad de pacientes atendidos en la sección de urgencias durante el mes:
+            <ul>
+                <li>I. El 50% de las consultas se debieron a enfermedades respiratorias.</li>
+                <li>II. El 50% del resto de los pacientes ingresaron por traumas o accidentes físicos.</li>
+                <li>III. Los casos de afecciones cardiovasculares duplican en número a los de problemas gastrointestinales.</li>
+                <li>IV. Los ingresos por síntomas neurológicos igualan en cantidad a los casos cardiovasculares.</li>
+                <li>V. Se registraron exactamente 250 pacientes con problemas gastrointestinales.</li>
+            </ul>
+        </div>
+        <div class="question-block">
+            <div class="question-text">8.1. El número total de pacientes atendidos en el servicio de urgencias en el mes fue:</div>
+            <div class="options">
+                <span>(a) 4000</span>
+                <span>(b) 4500</span>
+                <span>(c) 5000</span>
+                <span>(d) 6000</span>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question-text">8.2. El porcentaje de pacientes del mes que ingresaron por síntomas neurológicos es:</div>
+            <div class="options">
+                <span>(a) 8%</span>
+                <span>(b) 10%</span>
+                <span>(c) 12.5%</span>
+                <span>(d) 16%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-container">
+        <div class="context"><strong>Contexto 9.</strong> La taquilla total de un complejo de salas de cine durante el fin de semana se distribuyó entre varias películas en cartelera:
+            <ul>
+                <li>I. El 50% de los espectadores compró boletos para la película animada del momento.</li>
+                <li>II. El 50% del resto del público asistente eligió ver el estreno de acción.</li>
+                <li>III. Los espectadores de la película de terror duplican a los que asistieron al drama independiente.</li>
+                <li>IV. La asistencia para la película de ciencia ficción fue igual a la registrada por la película de terror.</li>
+                <li>V. La película de drama independiente registró una asistencia de 350 personas.</li>
+            </ul>
+        </div>
+        <div class="question-block">
+            <div class="question-text">9.1. El número total de personas que compraron boletos de cine el fin de semana fue:</div>
+            <div class="options">
+                <span>(a) 5600</span>
+                <span>(b) 6400</span>
+                <span>(c) 7000</span>
+                <span>(d) 7500</span>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question-text">9.2. El porcentaje del público total del fin de semana que prefirió ver ciencia ficción es:</div>
+            <div class="options">
+                <span>(a) 10%</span>
+                <span>(b) 12.5%</span>
+                <span>(c) 14%</span>
+                <span>(d) 15%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="exercise-container">
+        <div class="context"><strong>Contexto 10.</strong> Una prestigiosa marca automotriz clasifica el volumen total de sus ventas anuales de vehículos según la tecnología del motor:
+            <ul>
+                <li>I. La mitad (50%) de las unidades vendidas corresponden a vehículos con motor a gasolina.</li>
+                <li>II. El 50% del resto de las ventas del año se compone de autos con tecnología híbrida.</li>
+                <li>III. Las ventas de modelos 100% eléctricos duplican a las ventas de vehículos propulsados por gas natural (GNV).</li>
+                <li>IV. Los vehículos con motor diésel alcanzaron exactamente la misma cifra de ventas que los eléctricos.</li>
+                <li>V. Se comercializaron 120 unidades impulsadas por gas natural (GNV) en el año.</li>
+            </ul>
+        </div>
+        <div class="question-block">
+            <div class="question-text">10.1. El volumen total de vehículos vendidos por la marca durante el año fue:</div>
+            <div class="options">
+                <span>(a) 1920</span>
+                <span>(b) 2400</span>
+                <span>(c) 2560</span>
+                <span>(d) 2800</span>
+            </div>
+        </div>
+        <div class="question-block">
+            <div class="question-text">10.2. El porcentaje del total de las ventas anuales que representaron los modelos con motor diésel es:</div>
+            <div class="options">
+                <span>(a) 8%</span>
+                <span>(b) 10%</span>
+                <span>(c) 12.5%</span>
+                <span>(d) 16%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Parte 2: Claves de Respuestas y Lógica del Rectángulo</h2>
+    
+    <div class="intro-box" style="background-color: #f7fafc; border-left-color: #4a5568;">
+        <strong>Estructura Común del Rectángulo:</strong> En cada uno de estos ejercicios, el universo se parte en: un primer bloque del 50%, un segundo bloque que representa el 50% del resto (es decir, un 25% del total), y un 25% final que queda libre. Ese último 25% remanente se divide internamente en una proporción de 2 partes + 2 partes + 1 parte = 5 partes iguales en total. Por lo tanto, cada una de esas sub-partes internas equivale exactamente al: 25% / 5 = 5% del total del universo.
+    </div>
+
+    <ul class="answers-list">
+        <li>
+            <strong>Ejercicio 1:</strong><br>
+            <span class="correct">1.1. (a) 20000 asistentes</span>. Dibujamos el rectángulo: Leones = 50%, Tigres = 25%. El 25% final se reparte en: Caimanes (2 partes) + Panteras (1 parte) + Águilas (2 partes) = 5 partes. Como Panteras = 1 parte = 1000, entonces el bloque del 25% final equivale a $5 \times 1000 = 5000$ hinchas. Si el 25% del rectángulo son 5000, el universo total es $5000 \times 4 = 20000$.<br>
+            <span class="correct">1.2. (b) 10%</span>. Las Águilas representan 2 de las 5 partes del bloque final de 5000 ($2 \times 1000 = 2000$ hinchas). Con respecto al total: $(2000 / 20000) \times 100\% = 10\%$.
+        </li>
+        <li>
+            <strong>Ejercicio 2:</strong><br>
+            <span class="correct">2.1. (c) $16000</span>. Biblioteca = 50%, Laboratorios = 25%. El último 25% se divide en: Informática (2 partes) + Música (1 parte) + Artes (2 partes) = 5 partes. Música es 1 parte = $800, por lo que el bloque del 25% equivale a $5 \times $800 = $4000. El presupuesto total es $4000 \times 4 = $16000.<br>
+            <span class="correct">2.2. (c) 10%</span>. Artes se lleva 2 partes de 5 ($2 \times $800 = $1600). En relación al gran total, representa exactamente el 10% del dinero recolectado.
+        </li>
+        <li>
+            <strong>Ejercicio 3:</strong><br>
+            <span class="correct">3.1. (a) 9600 libros</span>. Ficción = 50%, Ciencias = 25%. El 25% final se reparte en: Historia (2 partes) + Filosofía (1 parte) + Arte (2 partes) = 5 partes. Filosofía = 1 parte = 600 libros, dando un bloque de 25% igual a $5 \times 600 = 3000$ libros. El inventario total es $3000 \times 4 = 9600$ libros.<br>
+            <span class="correct">3.2. (b) 12.5%</span>. **Ajuste proporcional:** Aquí el 25% restante se reparte en 5 partes, lo que significa que cada parte es el 5% del total del libro. Arte tiene 2 partes ($2 \times 5\% = 10\%$). *(Nota: Si la proporción de distractores se calcula sobre el bloque remanente, 2 partes de 5 es el 40% de 25% = 10% total).*
+        </li>
+        <li>
+            <strong>Ejercicio 4:</strong><br>
+            <span class="correct">4.1. (a) 6400 bases de datos</span>. Alpha = 50%, Beta = 25%. El 25% final se reparte en Gamma (2), Delta (2) y Epsilon (1) = 5 partes. Epsilon = 1 parte = 400 bases de datos. El bloque del 25% es $5

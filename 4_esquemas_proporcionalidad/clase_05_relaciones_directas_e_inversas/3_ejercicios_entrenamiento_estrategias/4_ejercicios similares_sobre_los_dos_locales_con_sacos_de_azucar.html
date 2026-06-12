@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Taller: Resolución por Diagramas de Barras</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 2cm;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 11pt;
+        }
+        h1 {
+            text-align: center;
+            color: #1a365d;
+            text-transform: uppercase;
+            font-size: 18pt;
+            margin-bottom: 5px;
+            border-bottom: 2px solid #2b6cb0;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2b6cb0;
+            font-size: 14pt;
+            margin-top: 30px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+            page-break-after: avoid;
+        }
+        .intro-box {
+            background-color: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 12px;
+            margin-bottom: 25px;
+            border-radius: 0 4px 4px 0;
+            font-size: 10.5pt;
+        }
+        .exercise {
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+        }
+        .exercise-title {
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 6px;
+        }
+        .options {
+            margin-top: 8px;
+            margin-bottom: 12px;
+            padding-left: 10px;
+        }
+        .options span {
+            margin-right: 25px;
+            font-weight: 500;
+        }
+        .draw-zone {
+            border: 1px dashed #cbd5e0;
+            border-radius: 4px;
+            height: 60px;
+            margin-top: 8px;
+            background-color: #fafafa;
+            position: relative;
+        }
+        .draw-zone::after {
+            content: "Espacio para el diagrama de barras";
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            font-size: 8pt;
+            color: #a0aec0;
+            font-style: italic;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        ul.answers-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul.answers-list li {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #edf2f7;
+            page-break-inside: avoid;
+        }
+        .correct-option {
+            font-weight: bold;
+            color: #2c5282;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Taller: Resolución por Diagramas de Barras (Compensación)</h1>
+    
+    <div class="intro-box">
+        <strong>Método de Barras:</strong> El objetivo es representar las cantidades iniciales como bloques. Cuando una cantidad pasa de un lugar a otro, el bloque total no cambia, solo se redistribuye hasta que las barras queden niveladas o en la proporción indicada.
+    </div>
+
+    <h2>Parte 1: Ejercicios de Entrenamiento</h2>
+
+    <div class="exercise">
+        <div class="exercise-title">1. El Enigma de los Granos</div>
+        <p>Entre dos sacos de arroz, A y B, hay 100 kg. Si se pasan 20 kg del saco A al saco B, ambos sacos quedan con la misma cantidad. ¿Cuántos kg tenía el saco A al principio?</p>
+        <div class="options">
+            <span>a) 60 kg</span>
+            <span>b) 70 kg</span>
+            <span>c) 80 kg</span>
+            <span>d) 50 kg</span>
+        </div>
+        <div class="draw-zone"></div>
+    </div>
+
+    <div class="exercise">
+        <div class="exercise-title">2. Los Tanques de Combustible</div>
+        <p>Dos depósitos contienen 1500 litros de gasolina. Si se transfiere el 25% del contenido del depósito A al B, los dos depósitos se igualan. ¿Cuántos litros tenía A originalmente?</p>
+        <div class="options">
+            <span>a) 750</span>
+            <span>b) 1000</span>
+            <span>c) 1200</span>
+            <span>d) 900</span>
+        </div>
+        <p><small style="color: #718096;"><em>Sugerencia: Divide la barra de A en 4 partes iguales (25% cada una).</em></small></p>
+    </div>
+
+    <div class="exercise">
+        <div class="exercise-title">3. Canicas en Juego (Corregido)</div>
+        <p>Juan y Luis tienen 192 canicas entre los dos. Juan le da a Luis 1/4 de sus canicas y ahora ambos tienen la misma cantidad. ¿Cuántas canicas tenía Juan al inicio?</p>
+        <div class="options">
+            <span>a) 96</span>
+            <span>b) 128</span>
+            <span>c) 144</span>
+            <span>d) 160</span>
+        </div>
+        <p><small style="color: #718096;"><em>Sugerencia: Barra de Juan dividida en 4 partes.</em></small></p>
+    </div>
+
+    <div class="exercise">
+        <div class="exercise-title">4. Reparto de Salarios</div>
+        <p>Dos empleados cobran un total de $3000. Si el empleado A le cede el 20% de su sueldo al B, ambos quedan con el mismo dinero. ¿Cuánto ganaba el empleado B?</p>
+        <div class="options">
+            <span>a) $1000</span>
+            <span>b) $1200</span>
+            <span>c) $1125</span>
+            <span>d) $1500</span>
+        </div>
+    </div>
+
+    <div class="exercise">
+        <div class="exercise-title">5. Las Cuentas del Ahorro</div>
+        <p>María tiene el triple de ahorro que Pedro. Si María le da $200 a Pedro, ahora ambos tienen la misma cantidad. ¿Cuánto tenían entre los dos?</p>
+        <div class="options">
+            <span>a) $600</span>
+            <span>b) $800</span>
+            <span>c) $400</span>
+            <span>d) $1000</span>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="exercise">
+        <div class="exercise-title">6. El Rebaño de Ovejas</div>
+        <p>Un pastor tiene 20 ovejas más que otro. Si el primero le pasa 10 ovejas al segundo, ¿cómo quedan sus rebaños en el diagrama de barras?</p>
+        <div class="options">
+            <span>a) El segundo tendrá más</span>
+            <span>b) El primero seguirá teniendo más</span>
+            <span>c) Quedarán iguales</span>
+            <span>d) No se puede saber</span>
+        </div>
+    </div>
+
+    <div class="exercise">
+        <div class="exercise-title">7. Cajas de Bombones</div>
+        <p>Hay 60 bombones repartidos en dos cajas. Al pasar 1/5 de la caja A a la B, la caja B queda con el doble de bombones que la A. ¿Cuántos bombones había en A inicialmente?</p>
+        <div class="options">
+            <span>a) 25</span>
+            <span>b) 30</span>
+            <span>c) 35</span>
+            <span>d) 40</span>
+        </div>
+    </div>
+
+    <div class="exercise">
+        <div class="exercise-title">8. Botellas de Agua</div>
+        <p>La botella A tiene 2 litros y la B tiene 1 litro. ¿Qué fracción de la botella A debe pasarse a la B para que la botella B tenga el doble que la A?</p>
+        <div class="options">
+            <span>a) 1/2</span>
+            <span>b) 1/4</span>
+            <span>c) 3/4</span>
+            <span>d) 2/3</span>
+        </div>
+    </div>
+
+    <div class="exercise">
+        <div class="exercise-title">9. Los Estantes de la Biblioteca</div>
+        <p>Dos estantes tienen 120 libros en total. El estante A tiene el doble que el B. Si se pasan 20 libros de A a B, ¿cuántos libros tendrá B ahora?</p>
+        <div class="options">
+            <span>a) 40</span>
+            <span>b) 60</span>
+            <span>c) 80</span>
+            <span>d) 100</span>
+        </div>
+    </div>
+
+    <div class="exercise">
+        <div class="exercise-title">10. El Gran Saldo</div>
+        <p>Dos amigos tienen $100 en total. Si el que tiene más dinero le da al otro el 10% de su capital, terminan con $50 cada uno. ¿Cuánto tenía el que poseía más dinero originalmente?</p>
+        <div class="options">
+            <span>a) $55.55</span>
+            <span>b) $62.50</span>
+            <span>c) $50.00</span>
+            <span>d) $44.45</span>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Clave de Respuestas (Lógica de Barras)</h2>
+    <div class="intro-box" style="background-color: #f7fafc; border-left-color: #4a5568;">
+        <strong>Nota metodológica:</strong> En este enfoque visualizamos cómo el "bloque" se desplaza y altera los niveles de las barras. El equilibrio total de los elementos se mantiene constante.
+    </div>
+
+    <ul class="answers-list">
+        <li>
+            <span class="correct-option">1. b) 70 kg.</span> Si al traspasar 20 kg las barras se nivelan, el punto de equilibrio es la mitad del total: 50 kg para cada uno. Por lo tanto, el saco A inicialmente tenía 50 kg + 20 kg = 70 kg.
+        </li>
+        <li>
+            <span class="correct-option">2. b) 1000 litros.</span> Si el 25% (1/4) de A iguala los depósitos, el punto de equilibrio final es 750 litros cada uno. Las 3 partes restantes de la barra de A deben sumar 750, de modo que cada cuarto equivale a 250 litros. Así, A originalmente poseía 4 cuartos = 1000 litros.
+        </li>
+        <li>
+            <span class="correct-option">3. b) 128 canicas.</span> Con un total de 192 canicas, el estado de equilibrio (mismo número para ambos) es de 96 canicas cada uno. Dado que Juan regala 1/4 de su barra para alcanzar este equilibrio, las 3 partes que retiene representan las 96 canicas finales (96 / 3 = 32 por cada parte). De esta forma, la cantidad inicial de Juan compuesta por 4 partes es: 4 * 32 = 128 canicas.
+        </li>
+        <li>
+            <span class="correct-option">4. c) $1125.</span> Si quedan iguales, cada uno termina con $1500 (la mitad de $3000). El 80% restante del sueldo de A es igual a $1500, lo que significa que el sueldo original de A era de $1875. Por diferencia con el total, el empleado B ganaba inicialmente: $3000 - $1875 = $1125.
+        </li>
+        <li>
+            <span class="correct-option">5. b) $800.</span> Estructuralmente, María tiene 3 bloques y Pedro 1 bloque (4 unidades en total). Para nivelarse con 2 bloques cada uno, María debe ceder exactamente 1 bloque, el cual equivale a los $200 indicados. El total absoluto es de 4 bloques: 4 * $200 = $800.
+        </li>
+        <li>
+            <span class="correct-option">6. c) Quedarán iguales.</span> Gráficamente, la barra del primer pastor excede a la del segundo en 20 unidades. Al transferir exactamente la mitad de dicha diferencia (10 ovejas), los extremos de ambas barras se compensan perfectamente y se igualan.
+        </li>
+        <li>
+            <span class="correct-option">7. a) 25 bombones.</span> Al proponer un valor inicial de A = 25 bombones, el 1/5 transferido equivale a 5 unidades. La caja A reduce su tamaño a 20 bombones, mientras que la caja B (que poseía originalmente 35) suma 5 unidades llegando a 40 bombones, cumpliendo la condición de ser el doble de A.
+        </li>
+        <li>
+            <span class="correct-option">8. a) 1/2.</span> La botella A cuenta con 2L. Si traslada la mitad de su capacidad (1L), se reduce a 1L de volumen. Simultáneamente, la botella B recibe esa unidad incrementando su contenido de 1L a 2L, resultando ser el doble que A.
+        </li>
+        <li>
+            <span class="correct-option">9. b) 60 libros.</span> El total de 120 libros repartidos bajo la relación "el doble que B" sitúa inicialmente a A con 80 libros y a B con 40. Al entregar 20 unidades desde el estante A hacia el B, el estante B consolida un total de: 40 + 20 = 60 libros.
+        </li>
+        <li>
+            <span class="correct-option">10. a) $55.55.</span> Al finalizar el movimiento de dinero, el punto de igualdad fija que el que tenía más se queda con $50, lo que representa el 90% (0.9) de su capital inicial tras desprenderse de un 10%. Planteando la ecuación de la barra: 0.9 * x = 50, se deduce que su valor de origen es x = $55.55.
+        </li>
+    </ul>
+
+</body>
+</html>
