@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Taller de Razonamiento Abstracto: Patrones en Sectores de Diagonales</title>
+    <style>
+        /* --- CONFIGURACIÓN DE IMPRESIÓN A4 --- */
+        @page {
+            size: A4;
+            margin: 15mm 15mm 20mm 15mm;
+        }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .page-break { page-break-before: always; }
+        }
+
+        /* --- ESTILOS GENERALES Y ESTRUCTURA --- */
+        body {
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        header {
+            border-bottom: 3px solid #0f766e;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+        }
+        h1 {
+            font-size: 20px;
+            color: #0f766e;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .meta-info {
+            font-size: 13px;
+            color: #64748b;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* --- FILAS DE EJERCICIOS --- */
+        .ejercicio {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background-color: #f8fafc;
+        }
+        .enunciado {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+        
+        .serie-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            padding: 12px 20px;
+            border-radius: 4px;
+            border: 1px solid #cbd5e1;
+            margin-bottom: 12px;
+        }
+        .opciones-container {
+            display: flex;
+            justify-content: space-between;
+            background: #f1f5f9;
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: 1px dashed #94a3b8;
+        }
+        
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .box span {
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 5px;
+            color: #64748b;
+        }
+        .flecha {
+            font-size: 22px;
+            color: #94a3b8;
+            font-weight: bold;
+        }
+
+        /* --- ESTILOS DE ELEMENTOS GEOMÉTRICOS SVG --- */
+        svg {
+            border: 1px solid #94a3b8;
+            background-color: #ffffff;
+            border-radius: 4px;
+        }
+        .diag {
+            stroke: #475569;
+            stroke-width: 1;
+        }
+        .marco {
+            stroke: #0f172a;
+            stroke-width: 2;
+            fill: none;
+        }
+        .p-vertice {
+            fill: #0f172a;
+        }
+        .fig-linea {
+            stroke: #0f172a;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+        }
+        .fig-cuadrado {
+            fill: none;
+            stroke: #0f172a;
+            stroke-width: 2;
+        }
+        .fig-circulo {
+            fill: none;
+            stroke: #0f172a;
+            stroke-width: 2;
+        }
+        .incognita-bg {
+            fill: #f0fdf4;
+            stroke: #16a34a;
+            stroke-width: 1.5;
+            stroke-dasharray: 4;
+        }
+        .incognita-text {
+            font-size: 28px;
+            font-weight: bold;
+            fill: #16a34a;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Razonamiento Abstracto: Rotación y Alternancia en Cuadrados Seccionados</h1>
+        <div class="meta-info">
+            <span><strong>Estudiante:</strong> ____________________________________</span>
+            <span><strong>Fecha:</strong> ____/____/2026</span>
+            <span><strong>Curso:</strong> _________</span>
+        </div>
+    </header>
+
+    <!-- EJERCICIO 1 -->
+    <div class="ejercicio">
+        <div class="enunciado">1. Analiza el comportamiento alternante del punto en los vértices y la rotación horaria por sectores del resto de componentes:</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="100" r="6" class="p-vertice"/>
+                <rect width="10" height="10" x="45" y="15" class="fig-cuadrado"/>
+                <line x1="40" y1="75" x2="60" y2="75" class="fig-linea"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="100" r="6" class="p-vertice"/>
+                <rect width="10" height="10" x="75" y="45" class="fig-cuadrado"/>
+                <line x1="25" y1="40" x2="25" y2="60" class="fig-linea"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="100" r="6" class="p-vertice"/>
+                <rect width="10" height="10" x="45" y="75" class="fig-cuadrado"/>
+                <line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="100" r="6" class="p-vertice"/><rect width="10" height="10" x="15" y="45" class="fig-cuadrado"/><line x1="75" y1="40" x2="75" y2="60" class="fig-linea"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="100" r="6" class="p-vertice"/><rect width="10" height="10" x="15" y="45" class="fig-cuadrado"/><line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="0" r="6" class="p-vertice"/><rect width="10" height="10" x="45" y="15" class="fig-cuadrado"/><line x1="75" y1="40" x2="75" y2="60" class="fig-linea"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="0" r="6" class="p-vertice"/><rect width="10" height="10" x="75" y="45" class="fig-cuadrado"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 2 -->
+    <div class="ejercicio">
+        <div class="enunciado">2. Movimiento circular antihorario del punto en los vértices, mientras las figuras internas se desplazan en cruz:</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="100" r="6" class="p-vertice"/>
+                <circle cx="50" cy="25" r="5" class="fig-circulo"/>
+                <line x1="75" y1="40" x2="75" y2="60" class="fig-linea"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="100" r="6" class="p-vertice"/>
+                <circle cx="25" cy="50" r="5" class="fig-circulo"/>
+                <line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="0" r="6" class="p-vertice"/>
+                <circle cx="75" cy="50" r="5" class="fig-circulo"/>
+                <line x1="40" y1="75" x2="60" y2="75" class="fig-linea"/>
+            </svg><span>Fig. 4</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="0" r="6" class="p-vertice"/><circle cx="50" cy="75" r="5" class="fig-circulo"/><line x1="25" y1="40" x2="25" y2="60" class="fig-linea"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="0" r="6" class="p-vertice"/><circle cx="50" cy="25" r="5" class="fig-circulo"/><line x1="40" y1="75" x2="60" y2="75" class="fig-linea"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="0" r="6" class="p-vertice"/><circle cx="25" cy="50" r="5" class="fig-circulo"/><line x1="75" y1="40" x2="75" y2="60" class="fig-linea"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="100" r="6" class="p-vertice"/><circle cx="75" cy="50" r="5" class="fig-circulo"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 3 -->
+    <div class="ejercicio">
+        <div class="enunciado">3. Patrón de rebote simétrico (Efecto espejo vertical entre Fig 1-2 y Fig 3-4):</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="0" r="6" class="p-vertice"/>
+                <line x1="25" y1="40" x2="25" y2="60" class="fig-linea"/>
+                <rect width="10" height="10" x="75" y="45" class="fig-cuadrado"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="0" r="6" class="p-vertice"/>
+                <line x1="75" y1="40" x2="75" y2="60" class="fig-linea"/>
+                <rect width="10" height="10" x="15" y="45" class="fig-cuadrado"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="100" r="6" class="p-vertice"/>
+                <line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+                <rect width="10" height="10" x="45" y="75" class="fig-cuadrado"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="100" r="6" class="p-vertice"/><line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/><rect width="10" height="10" x="45" y="75" class="fig-cuadrado"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="100" r="6" class="p-vertice"/><line x1="40" y1="75" x2="60" y2="75" class="fig-linea"/><rect width="10" height="10" x="45" y="25" class="fig-cuadrado"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="0" r="6" class="p-vertice"/><line x1="75" y1="40" x2="75" y2="60" class="fig-linea"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="0" r="6" class="p-vertice"/><rect width="10" height="10" x="15" y="45" class="fig-cuadrado"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <div class="page-break"></div> <!-- TRASLADO DE HOJA PARA CONTROL DE FORMATO -->
+
+    <!-- EJERCICIO 4 -->
+    <div class="ejercicio">
+        <div class="enunciado">4. Duplicación proporcional e inversión de sentido: El punto se desplaza en diagonal y las líneas cambian de sector y orientación.</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="0" r="6" class="p-vertice"/>
+                <line x1="25" y1="40" x2="25" y2="60" class="fig-linea"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="100" r="6" class="p-vertice"/>
+                <line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="0" r="6" class="p-vertice"/>
+                <line x1="75" y1="40" x2="75" y2="60" class="fig-linea"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="100" r="6" class="p-vertice"/><line x1="40" y1="75" x2="60" y2="75" class="fig-linea"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="100" r="6" class="p-vertice"/><line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="0" r="6" class="p-vertice"/><line x1="25" y1="40" x2="25" y2="60" class="fig-linea"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="100" r="6" class="p-vertice"/><line x1="25" y1="40" x2="25" y2="60" class="fig-linea"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 5 -->
+    <div class="ejercicio">
+        <div class="enunciado">5. Condición centrípeta: Las dos formas internas se aproximan hacia el centro de la intersección diagonal paso a paso.</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="0" r="6" class="p-vertice"/>
+                <circle cx="50" cy="15" r="4" class="fig-circulo"/><rect width="8" height="8" x="46" y="77" class="fig-cuadrado"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="0" r="6" class="p-vertice"/>
+                <circle cx="50" cy="28" r="4" class="fig-circulo"/><rect width="8" height="8" x="46" y="64" class="fig-cuadrado"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="0" r="6" class="p-vertice"/>
+                <circle cx="50" cy="38" r="4" class="fig-circulo"/><rect width="8" height="8" x="46" y="54" class="fig-cuadrado"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="0" r="6" class="p-vertice"/><circle cx="50" cy="46" r="4" class="fig-circulo"/><rect width="8" height="8" x="46" y="46" class="fig-cuadrado"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="0" r="6" class="p-vertice"/><circle cx="50" cy="15" r="4" class="fig-circulo"/><rect width="8" height="8" x="46" y="77" class="fig-cuadrado"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="100" r="6" class="p-vertice"/><circle cx="25" cy="50" r="4" class="fig-circulo"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="0" r="6" class="p-vertice"/><rect width="8" height="8" x="15" y="46" class="fig-cuadrado"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 6 -->
+    <div class="ejercicio">
+        <div class="enunciado">6. El punto avanza linealmente por la arista inferior. Las figuras interiores realizan un intercambio cíclico de 180°:</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="100" r="6" class="p-vertice"/>
+                <circle cx="25" cy="50" r="5" class="fig-circulo"/><line x1="70" y1="40" x2="70" y2="60" class="fig-linea"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="50" cy="100" r="6" class="p-vertice"/>
+                <line x1="25" y1="40" x2="25" y2="60" class="fig-linea"/><circle cx="75" cy="50" r="5" class="fig-circulo"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="100" r="6" class="p-vertice"/>
+                <circle cx="25" cy="50" r="5" class="fig-circulo"/><line x1="70" y1="40" x2="70" y2="60" class="fig-linea"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="50" cy="100" r="6" class="p-vertice"/><line x1="25" y1="40" x2="25" y2="60" class="fig-linea"/><circle cx="75" cy="50" r="5" class="fig-circulo"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="100" r="6" class="p-vertice"/><line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="50" cy="100" r="6" class="p-vertice"/><circle cx="25" cy="50" r="5" class="fig-circulo"/><line x1="70" y1="40" x2="70" y2="60" class="fig-linea"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="0" r="6" class="p-vertice"/><rect width="10" height="10" x="45" y="45" class="fig-cuadrado"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- EJERCICIO 7 -->
+    <div class="ejercicio">
+        <div class="enunciado">7. Inversión lógica de formas: Los elementos internos se transforman cíclicamente (Línea ↔ Cuadrado) siguiendo una rotación horaria:</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="0" r="6" class="p-vertice"/>
+                <line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="100" r="6" class="p-vertice"/>
+                <rect width="10" height="10" x="75" y="45" class="fig-cuadrado"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="100" r="6" class="p-vertice"/>
+                <line x1="40" y1="75" x2="60" y2="75" class="fig-linea"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="0" r="6" class="p-vertice"/><rect width="10" height="10" x="15" y="45" class="fig-cuadrado"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="0" r="6" class="p-vertice"/><line x1="25" y1="40" x2="25" y2="60" class="fig-linea"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="0" r="6" class="p-vertice"/><rect width="10" height="10" x="45" y="15" class="fig-cuadrado"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="100" r="6" class="p-vertice"/><line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 8 -->
+    <div class="ejercicio">
+        <div class="enunciado">8. El punto negro realiza saltos en cruz (Arriba ↔ Abajo). Las figuras de los sectores rotan 180° por paso:</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="50" cy="0" r="6" class="p-vertice"/>
+                <rect width="10" height="10" x="45" y="15" class="fig-cuadrado"/><circle cx="50" cy="75" r="5" class="fig-circulo"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="50" cy="100" r="6" class="p-vertice"/>
+                <circle cx="50" cy="25" r="5" class="fig-circulo"/><rect width="10" height="10" x="45" y="75" class="fig-cuadrado"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="50" cy="100" r="6" class="p-vertice"/>
+                <circle cx="50" cy="25" r="5" class="fig-circulo"/><rect width="10" height="10" x="45" y="75" class="fig-cuadrado"/>
+            </svg><span>Fig. 4</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="50" cy="0" r="6" class="p-vertice"/><rect width="10" height="10" x="45" y="15" class="fig-cuadrado"/><circle cx="50" cy="75" r="5" class="fig-circulo"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="50" cy="100" r="6" class="p-vertice"/><rect width="10" height="10" x="45" y="15" class="fig-cuadrado"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="0" r="6" class="p-vertice"/><circle cx="50" cy="25" r="5" class="fig-circulo"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="50" cy="0" r="6" class="p-vertice"/><line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 9 -->
+    <div class="ejercicio">
+        <div class="enunciado">9. Desplazamiento simultáneo convergente: Las líneas de los sectores laterales avanzan al centro hasta unirse en una cruz ($+$):</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="0" r="6" class="p-vertice"/>
+                <line x1="15" y1="40" x2="15" y2="60" class="fig-linea"/><line x1="40" y1="15" x2="60" y2="15" class="fig-linea"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="0" r="6" class="p-vertice"/>
+                <line x1="30" y1="40" x2="30" y2="60" class="fig-linea"/><line x1="40" y1="30" x2="60" y2="30" class="fig-linea"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="100" r="6" class="p-vertice"/>
+                <line x1="60" y1="40" x2="60" y2="60" class="fig-linea"/><line x1="40" y1="60" x2="60" y2="60" class="fig-linea"/>
+            </svg><span>Fig. 4</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="100" r="6" class="p-vertice"/><line x1="50" y1="35" x2="50" y2="65" class="fig-linea"/><line x1="35" y1="50" x2="65" y2="50" class="fig-linea"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="100" r="6" class="p-vertice"/><line x1="45" y1="40" x2="45" y2="60" class="fig-linea"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="0" r="6" class="p-vertice"/><rect width="10" height="10" x="45" y="45" class="fig-cuadrado"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="100" r="6" class="p-vertice"/><circle cx="50" cy="50" r="5" class="fig-circulo"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- EJERCICIO 10 -->
+    <div class="ejercicio">
+        <div class="enunciado">10. Complejo acumulativo: El punto recorre los vértices en sentido de las agujas del reloj, y se añade un elemento por sector en cada iteración:</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="0" cy="0" r="6" class="p-vertice"/>
+                <line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="0" r="6" class="p-vertice"/>
+                <line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/><rect width="10" height="10" x="75" y="45" class="fig-cuadrado"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/>
+                <circle cx="100" cy="100" r="6" class="p-vertice"/>
+                <line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/><rect width="10" height="10" x="75" y="45" class="fig-cuadrado"/><line x1="40" y1="75" x2="60" y2="75" class="fig-linea"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="100" r="6" class="p-vertice"/><line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/><rect width="10" height="10" x="75" y="45" class="fig-cuadrado"/><line x1="40" y1="75" x2="60" y2="75" class="fig-linea"/><rect width="10" height="10" x="15" y="45" class="fig-cuadrado"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="100" r="6" class="p-vertice"/><line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/><rect width="10" height="10" x="75" y="45" class="fig-cuadrado"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="100" cy="100" r="6" class="p-vertice"/><line x1="40" y1="25" x2="60" y2="25" class="fig-linea"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M0 0 L100 100 M0 100 L100 0" class="diag"/><rect width="100" height="100" class="marco"/><circle cx="0" cy="0" r="6" class="p-vertice"/><rect width="10" height="10" x="45" y="45" class="fig-cuadrado"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE RESPUESTAS EXCLUSIVA PARA EL DOCENTE -->
+    <div class="ejercicio" style="margin-top: 35px; border-color: #0f766e; background-color: #f0fdf4;">
+        <div class="enunciado" style="color: #0f766e; font-size: 15px;">🔑 Clave de Respuestas Explicada (Para el Profesor):</div>
+        <p style="font-size: 12px; color: #16a34a; margin: 0; line-height: 1.5;">
+            <strong>1: A</strong> (El punto negro alterna entre los vértices inferiores. Las figuras internas giran 90° horario, por lo que el cuadrado pasa al sector izquierdo y la línea al derecho de forma vertical).<br>
+            <strong>2: A</strong> (El punto avanza en sentido antihorario por las esquinas; le corresponde el vértice superior derecho. Las figuras se desplazan 1 paso en cruz antihorario).<br>
+            <strong>3: A</strong> (Patrón de espejo simétrico respecto al eje vertical. La Fig 4 debe ser el reflejo idéntico de la Fig 3).<br>
+            <strong>4: A</strong> (El punto vuelve al vértice inferior derecho por alternancia diagonal. La línea avanza al sector inferior variando su sentido a horizontal).<br>
+            <strong>5: A</strong> (El punto se alterna en las esquinas superiores. Los objetos avanzan un cuadrante hacia el centro hasta colisionar y superponerse).<br>
+            <strong>6: A</strong> (El punto viaja por el suelo horizontal. Los componentes interiores rotan 180° alternando sus posiciones de manera cíclica).<br>
+            <strong>7: A</strong> (El punto baja a la esquina inferior izquierda. Los elementos mutan de forma secuencial y rotan 90° a la izquierda por paso).<br>
+            <strong>8: A</strong> (El punto rebota verticalmente; en la Fig 3 debe estar arriba. Las formas internas intercambian su orientación de sector verticalmente).<br>
+            <strong>9: A</strong> (Las líneas se mueven hacia el centro de las coordenadas (50,50) encontrándose en la Fig 3 para formar una cruz perfecta de intersección).<br>
+            <strong>10: A</strong> (El punto se aloja en el cuadrante inferior izquierdo. La secuencia añade un elemento por sector completando el ciclo perimetral).
+        </p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Taller de Series Gráficas: Sistemas Rotatorios de Aspas</title>
+    <style>
+        /* --- CONFIGURACIÓN DE IMPRESIÓN A4 --- */
+        @page {
+            size: A4;
+            margin: 15mm 15mm 20mm 15mm;
+        }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .page-break { page-break-before: always; }
+        }
+
+        /* --- ESTILOS GENERALES Y TIPOGRAFÍA --- */
+        body {
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: #2c3e50;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        header {
+            border-bottom: 3px solid #1e3a8a;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        h1 {
+            font-size: 22px;
+            color: #1e3a8a;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .meta-info {
+            font-size: 13px;
+            color: #64748b;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* --- CONTENEDORES DE EJERCICIOS --- */
+        .ejercicio {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background-color: #f8fafc;
+        }
+        .enunciado {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+        
+        /* --- FILAS DE GRÁFICOS --- */
+        .serie-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            padding: 12px 20px;
+            border-radius: 4px;
+            border: 1px solid #cbd5e1;
+            margin-bottom: 12px;
+        }
+        .opciones-container {
+            display: flex;
+            justify-content: space-between;
+            background: #f1f5f9;
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: 1px dashed #94a3b8;
+        }
+        
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .box span {
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 5px;
+            color: #64748b;
+        }
+        .flecha {
+            font-size: 22px;
+            color: #94a3b8;
+            font-weight: bold;
+        }
+
+        /* --- ESTILOS DE LOS ELEMENTOS SVG --- */
+        svg {
+            border: 1px dashed #cbd5e1;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+        .eje {
+            stroke: #1e293b;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+        }
+        .p-negro {
+            fill: #0f172a;
+        }
+        .p-blanco {
+            fill: #ffffff;
+            stroke: #0f172a;
+            stroke-width: 2;
+        }
+        .incognita-bg {
+            fill: #fdf2f8;
+            stroke: #db2777;
+            stroke-width: 1.5;
+            stroke-dasharray: 4;
+        }
+        .incognita-text {
+            font-size: 28px;
+            font-weight: bold;
+            fill: #db2777;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Razonamiento Espacial: Rotación de Sistemas de Aspas ($Y$-Trisectadas)</h1>
+        <div class="meta-info">
+            <span><strong>Estudiante:</strong> ____________________________________</span>
+            <span><strong>Fecha:</strong> ____/____/2026</span>
+            <span><strong>Curso:</strong> _________</span>
+        </div>
+    </header>
+
+    <!-- EJERCICIO 1 -->
+    <div class="ejercicio">
+        <div class="enunciado">1. Rotación pura del eje (90° sentido horario) con puntos estáticos. Encuentra la figura de la posición (?):</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L15 50 M50 50 L75 15 M50 50 L75 85" class="eje"/>
+                <circle cx="15" cy="35" r="5" class="p-negro"/>
+                <circle cx="85" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L85 50 M50 50 L25 85 M50 50 L25 15" class="eje"/>
+                <circle cx="15" cy="35" r="5" class="p-negro"/>
+                <circle cx="85" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 85 M50 50 L15 25 M50 50 L85 25" class="eje"/>
+                <circle cx="15" cy="35" r="5" class="p-negro"/>
+                <circle cx="85" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Fig. 4</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 75 M50 50 L15 75" class="eje"/><circle cx="15" cy="35" r="5" class="p-negro"/><circle cx="85" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 85 M50 50 L15 25 M50 50 L85 25" class="eje"/><circle cx="15" cy="35" r="5" class="p-negro"/><circle cx="85" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L15 50 M50 50 L75 15 M50 50 L75 85" class="eje"/><circle cx="50" cy="15" r="5" class="p-negro"/><circle cx="50" cy="85" r="5" class="p-blanco"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 75 M50 50 L15 75" class="eje"/><circle cx="85" cy="50" r="5" class="p-negro"/><circle cx="15" cy="35" r="5" class="p-blanco"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 2 -->
+    <div class="ejercicio">
+        <div class="enunciado">2. El eje central gira 120° en sentido antihorario. Los puntos giran solidariamente amarrados a sus aspas.</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="50" cy="25" r="5" class="p-negro"/>
+                <circle cx="25" cy="64" r="5" class="p-blanco"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="20" cy="68" r="5" class="p-negro"/>
+                <circle cx="80" cy="68" r="5" class="p-blanco"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="80" cy="68" r="5" class="p-negro"/>
+                <circle cx="50" cy="15" r="5" class="p-blanco"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="50" cy="25" r="5" class="p-negro"/><circle cx="20" cy="68" r="5" class="p-blanco"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="50" cy="15" r="5" class="p-negro"/><circle cx="25" cy="64" r="5" class="p-blanco"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="50" cy="15" r="5" class="p-blanco"/><circle cx="25" cy="64" r="5" class="p-negro"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="20" cy="68" r="5" class="p-blanco"/><circle cx="80" cy="68" r="5" class="p-blanco"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 3 -->
+    <div class="ejercicio">
+        <div class="enunciado">3. Alternancia reflexiva (Espejo vertical). Identifica qué opción rompe o continúa la secuencia en (?):</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L15 15 M50 50 L15 85 M50 50 L80 50" class="eje"/>
+                <circle cx="20" cy="30" r="5" class="p-negro"/>
+                <circle cx="20" cy="70" r="5" class="p-blanco"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L85 15 M50 50 L85 85 M50 50 L20 50" class="eje"/>
+                <circle cx="80" cy="30" r="5" class="p-negro"/>
+                <circle cx="80" cy="70" r="5" class="p-blanco"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L15 15 M50 50 L15 85 M50 50 L80 50" class="eje"/>
+                <circle cx="20" cy="30" r="5" class="p-negro"/>
+                <circle cx="20" cy="70" r="5" class="p-blanco"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L15 15 M50 50 L15 85 M50 50 L80 50" class="eje"/><circle cx="20" cy="30" r="5" class="p-negro"/><circle cx="20" cy="70" r="5" class="p-blanco"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L85 15 M50 50 L85 85 M50 50 L20 50" class="eje"/><circle cx="80" cy="30" r="5" class="p-negro"/><circle cx="80" cy="70" r="5" class="p-blanco"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L85 15 M50 50 L85 85 M50 50 L20 50" class="eje"/><circle cx="80" cy="30" r="5" class="p-blanco"/><circle cx="80" cy="70" r="5" class="p-negro"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 75 M50 50 L15 75" class="eje"/><circle cx="50" cy="25" r="5" class="p-negro"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <div class="page-break"></div> <!-- CONTROL DE PÁGINAS A4 -->
+
+    <!-- EJERCICIO 4 -->
+    <div class="ejercicio">
+        <div class="enunciado">4. Progresión aritmética de elementos: El eje se mantiene fijo, pero los puntos blancos aumentan (+1 por paso):</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="50" cy="25" r="4" class="p-blanco"/>
+                <circle cx="20" cy="68" r="4" class="p-negro"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="50" cy="25" r="4" class="p-blanco"/><circle cx="80" cy="68" r="4" class="p-blanco"/>
+                <circle cx="20" cy="68" r="4" class="p-negro"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="50" cy="25" r="4" class="p-blanco"/><circle cx="80" cy="68" r="4" class="p-blanco"/>
+                <circle cx="50" cy="40" r="4" class="p-blanco"/><circle cx="80" cy="50" r="4" class="p-blanco"/>
+                <circle cx="20" cy="68" r="4" class="p-negro"/>
+            </svg><span>Fig. 4</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="50" cy="25" r="4" class="p-blanco"/><circle cx="80" cy="68" r="4" class="p-blanco"/><circle cx="50" cy="40" r="4" class="p-blanco"/><circle cx="20" cy="68" r="4" class="p-negro"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="20" cy="68" r="4" class="p-blanco"/><circle cx="80" cy="68" r="4" class="p-blanco"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="50" cy="25" r="4" class="p-blanco"/><circle cx="20" cy="68" r="4" class="p-negro"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="50" cy="25" r="4" class="p-negro"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 5 -->
+    <div class="ejercicio">
+        <div class="enunciado">5. El eje central gira 45° en sentido horario por paso. Los puntos se desplazan linealmente hacia afuera:</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 50 M50 50 L50 85" class="eje"/>
+                <circle cx="50" cy="40" r="5" class="p-negro"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L75 25 M50 50 L75 75 M50 50 L25 75" class="eje"/>
+                <circle cx="60" cy="40" r="5" class="p-negro"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L85 50 M50 50 L50 85 M50 50 L15 50" class="eje"/>
+                <circle cx="75" cy="50" r="5" class="p-negro"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L75 75 M50 50 L25 75 M50 50 L25 25" class="eje"/><circle cx="70" cy="70" r="5" class="p-negro"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 85 M50 50 L15 50 M50 50 L50 15" class="eje"/><circle cx="50" cy="75" r="5" class="p-negro"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L75 75 M50 50 L25 75 M50 50 L25 25" class="eje"/><circle cx="50" cy="50" r="5" class="p-negro"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 50 M50 50 L50 85" class="eje"/><circle cx="50" cy="20" r="5" class="p-blanco"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 6 -->
+    <div class="ejercicio">
+        <div class="enunciado">6. Contracción y Extensión: Los puntos alternan su distancia al centro (Cerca ↔ Lejos) mientras el eje gira 90° antihorario.</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L85 50 M50 50 L50 85 M50 50 L15 50" class="eje"/>
+                <circle cx="75" cy="50" r="5" class="p-negro"/><circle cx="25" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 50 M50 50 L50 85" class="eje"/>
+                <circle cx="50" cy="25" r="5" class="p-negro"/><circle cx="50" cy="75" r="5" class="p-blanco"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L15 50 M50 50 L50 15 M50 50 L85 50" class="eje"/>
+                <circle cx="35" cy="50" r="5" class="p-negro"/><circle cx="65" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 85 M50 50 L15 50 M50 50 L50 15" class="eje"/><circle cx="50" cy="75" r="5" class="p-negro"/><circle cx="50" cy="25" r="5" class="p-blanco"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 85 M50 50 L15 50 M50 50 L50 15" class="eje"/><circle cx="50" cy="65" r="5" class="p-negro"/><circle cx="50" cy="35" r="5" class="p-blanco"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L85 50 M50 50 L50 85 M50 50 L15 50" class="eje"/><circle cx="75" cy="50" r="5" class="p-blanco"/><circle cx="25" cy="50" r="5" class="p-negro"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 85 M50 50 L15 50 M50 50 L50 15" class="eje"/><circle cx="50" cy="35" r="5" class="p-negro"/><circle cx="50" cy="65" r="5" class="p-blanco"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- EJERCICIO 7 -->
+    <div class="ejercicio">
+        <div class="enunciado">7. Fusión de puntos: Dos puntos (uno negro y uno blanco) avanzan en sentidos opuestos hasta colisionar en la posición (?):</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="50" cy="25" r="5" class="p-negro"/>
+                <circle cx="80" cy="68" r="5" class="p-blanco"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="80" cy="68" r="5" class="p-negro"/>
+                <circle cx="20" cy="68" r="5" class="p-blanco"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="80" cy="68" r="5" class="p-negro"/>
+                <circle cx="50" cy="25" r="5" class="p-blanco"/>
+            </svg><span>Fig. 4</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="20" cy="68" r="5" class="p-negro"/><circle cx="20" cy="68" r="5" class="p-blanco"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="50" cy="25" r="5" class="p-negro"/><circle cx="80" cy="68" r="5" class="p-blanco"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="20" cy="68" r="5" class="p-negro"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="50" cy="25" r="5" class="p-blanco"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 8 -->
+    <div class="ejercicio">
+        <div class="enunciado">8. Rotación complementaria: Dos sistemas independientes de aspas simples rotan en direcciones opuestas (Horario vs Antihorario).</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L15 50" class="eje"/>
+                <circle cx="50" cy="25" r="5" class="p-negro"/><circle cx="25" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L85 50 M50 50 L50 15" class="eje"/>
+                <circle cx="75" cy="50" r="5" class="p-negro"/><circle cx="50" cy="25" r="5" class="p-blanco"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 85 M50 50 L85 50" class="eje"/>
+                <circle cx="50" cy="75" r="5" class="p-negro"/><circle cx="75" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L15 50 M50 50 L50 85" class="eje"/><circle cx="25" cy="50" r="5" class="p-negro"/><circle cx="50" cy="75" r="5" class="p-blanco"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L15 50 M50 50 L50 15" class="eje"/><circle cx="25" cy="50" r="5" class="p-negro"/><circle cx="50" cy="25" r="5" class="p-blanco"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L15 50" class="eje"/><circle cx="50" cy="25" r="5" class="p-blanco"/><circle cx="25" cy="50" r="5" class="p-negro"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L85 50 M50 50 L50 85" class="eje"/><circle cx="75" cy="50" r="5" class="p-negro"/><circle cx="50" cy="75" r="5" class="p-blanco"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 9 -->
+    <div class="ejercicio">
+        <div class="enunciado">9. Patrón de cambio de color (Inversión binaria): Las aspas rotan 120° antihorario y los puntos alternan su color (Negro ↔ Blanco).</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="50" cy="25" r="5" class="p-negro"/><circle cx="80" cy="68" r="5" class="p-blanco"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="20" cy="68" r="5" class="p-blanco"/><circle cx="50" cy="15" r="5" class="p-negro"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/>
+                <circle cx="80" cy="68" r="5" class="p-negro"/><circle cx="20" cy="68" r="5" class="p-blanco"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="50" cy="15" r="5" class="p-blanco"/><circle cx="80" cy="68" r="5" class="p-negro"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="20" cy="68" r="5" class="p-negro"/><circle cx="50" cy="15" r="5" class="p-blanco"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="50" cy="25" r="5" class="p-negro"/><circle cx="80" cy="68" r="5" class="p-blanco"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L80 68 M50 50 L20 68" class="eje"/><circle cx="80" cy="68" r="5" class="p-blanco"/><circle cx="20" cy="68" r="5" class="p-negro"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- EJERCICIO 10 -->
+    <div class="ejercicio">
+        <div class="enunciado">10. Sucesión compleja: El aspa rota 90° horario, el punto negro avanza un aspa en sentido antihorario y el blanco se duplica.</div>
+        <div class="serie-container">
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 50 M50 50 L50 85 M50 50 L15 50" class="eje"/>
+                <circle cx="50" cy="25" r="5" class="p-negro"/><circle cx="85" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Fig. 1</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 50 M50 50 L50 85 M50 50 L15 50" class="eje"/>
+                <circle cx="15" cy="50" r="5" class="p-negro"/><circle cx="50" cy="85" r="5" class="p-blanco"/><circle cx="85" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Fig. 2</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 50 M50 50 L50 85 M50 50 L15 50" class="eje"/>
+                <circle cx="50" cy="85" r="5" class="p-negro"/><circle cx="15" cy="50" r="5" class="p-blanco"/><circle cx="50" cy="15" r="5" class="p-blanco"/><circle cx="85" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Fig. 3</span></div>
+            <div class="flecha">→</div>
+            <div class="box"><svg width="80" height="80" viewBox="0 0 100 100">
+                <rect width="98" height="98" x="1" y="1" class="incognita-bg"/>
+                <text x="50" y="58" text-anchor="middle" class="incognita-text">?</text>
+            </svg><span>Posición (?)</span></div>
+        </div>
+        <div class="opciones-container">
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 50 M50 50 L50 85 M50 50 L15 50" class="eje"/><circle cx="85" cy="50" r="5" class="p-negro"/><circle cx="50" cy="25" r="5" class="p-blanco"/><circle cx="15" cy="50" r="5" class="p-blanco"/><circle cx="50" cy="85" r="5" class="p-blanco"/><circle cx="35" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Opción A</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 50 M50 50 L50 85 M50 50 L15 50" class="eje"/><circle cx="50" cy="25" r="5" class="p-negro"/><circle cx="85" cy="50" r="5" class="p-blanco"/>
+            </svg><span>Opción B</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 50 M50 50 L50 85 M50 50 L15 50" class="eje"/><circle cx="15" cy="50" r="5" class="p-negro"/><circle cx="50" cy="85" r="5" class="p-blanco"/>
+            </svg><span>Opción C</span></div>
+            <div class="box"><svg width="70" height="70" viewBox="0 0 100 100">
+                <path d="M50 50 L50 15 M50 50 L85 50 M50 50 L50 85 M50 50 L15 50" class="eje"/><circle cx="50" cy="85" r="5" class="p-blanco"/>
+            </svg><span>Opción D</span></div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE RESPUESTAS EXCLUSIVA PARA EL DOCENTE -->
+    <div class="ejercicio" style="margin-top: 35px; border-color: #10b981; background-color: #ecfdf5;">
+        <div class="enunciado" style="color: #065f46; font-size: 15px;">🔑 Clave de Respuestas Explicada (Para el Profesor):</div>
+        <p style="font-size: 12px; color: #047857; margin: 0; line-height: 1.5;">
+            <strong>1: A</strong> (El eje gira 90° horario; la Fig 1 tenía el aspa a la izquierda, la Fig 2 debe apuntar hacia ARRIBA con los puntos fijos).<br>
+            <strong>2: A</strong> (El eje es estático pero el patrón interno rota amarrado a las aspas 120° antihorario. En la Fig 4 le toca al negro estar arriba).<br>
+            <strong>3: B</strong> (Espejo perfecto. Al reflejar la Fig 3 de manera vertical, obtenemos exactamente la Opción B).<br>
+            <strong>4: A</strong> (La Fig 3 debe contener 3 puntos blancos distribuidos en las aspas disponibles y 1 negro fijo).<br>
+            <strong>5: A</strong> (Rotación de 45° horario combinada con alejamiento del centro en cada paso).<br>
+            <strong>6: B</strong> (El eje gira 90° antihorario. Al pasar a la Fig 4, las aspas quedan verticales y los puntos pasan a la configuración "Cerca" del centro).<br>
+            <strong>7: A</strong> (Ambos puntos se encuentran en el aspa inferior izquierda ocupando el mismo espacio coordenado, creando superposición).<br>
+            <strong>8: A</strong> (El negro rota 90° antihorario y el blanco 90° horario; en la Fig 4 ambos coinciden en el cuadrante inferior izquierdo).<br>
+            <strong>9: A</strong> (El sistema rota 120° antihorario y los colores se invierten: el negro pasa a blanco y el blanco a negro).<br>
+            <strong>10: A</strong> (El punto negro avanza a la derecha (antihorario) y aparecen 4 puntos blancos distribuidos en las cuatro extremidades).
+        </p>
+    </div>
+
+</body>
+</html>
