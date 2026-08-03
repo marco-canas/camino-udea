@@ -1,0 +1,636 @@
+import os
+from weasyprint import HTML
+
+html_content = """<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Taller de Diagramas de Venn - Teoría de Conjuntos</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 18mm 15mm 18mm 15mm;
+            background-color: #fcfcfd;
+            @bottom-right {
+                content: "Página " counter(page) " de " counter(pages);
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 8pt;
+                color: #666666;
+            }
+            @bottom-left {
+                content: "Estrategias de Resolución con Diagramas de Venn";
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 8pt;
+                color: #666666;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #1a1a1a;
+            line-height: 1.45;
+            margin: 0;
+            padding: 0;
+            font-size: 10pt;
+        }
+
+        /* Header block */
+        .header {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 16pt;
+            font-weight: bold;
+            color: #1a252f;
+            margin: 0 0 4px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header h2 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 11pt;
+            font-weight: normal;
+            color: #4a5568;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .student-info {
+            display: table;
+            width: 100%;
+            margin-bottom: 18px;
+            border-bottom: 1px dashed #cbd5e0;
+            padding-bottom: 8px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 9pt;
+        }
+
+        .student-info-row {
+            display: table-row;
+        }
+
+        .student-info-cell {
+            display: table-cell;
+            padding: 3px 0;
+        }
+
+        .student-info-cell.line {
+            border-bottom: 1px solid #718096;
+        }
+
+        /* Exercise box */
+        .exercise-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 12px 15px;
+            margin-bottom: 16px;
+            page-break-inside: avoid;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .exercise-title {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 10.5pt;
+            font-weight: bold;
+            color: #2b6cb0;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #edf2f7;
+            padding-bottom: 4px;
+        }
+
+        .exercise-statement {
+            font-size: 10pt;
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+
+        .data-list {
+            margin: 6px 0 10px 15px;
+            padding-left: 10px;
+            list-style-type: square;
+        }
+
+        .data-list li {
+            margin-bottom: 3px;
+            font-size: 9.5pt;
+        }
+
+        /* Questions layout */
+        .questions-container {
+            display: table;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .question-col {
+            display: table-cell;
+            width: 50%;
+            vertical-align: top;
+            padding-right: 10px;
+        }
+
+        .question-col:last-child {
+            padding-right: 0;
+            padding-left: 10px;
+        }
+
+        .question-text {
+            font-weight: bold;
+            font-size: 9.5pt;
+            margin-bottom: 6px;
+            color: #2d3748;
+        }
+
+        .options-grid {
+            display: table;
+            width: 100%;
+            margin-left: 5px;
+        }
+
+        .option-row {
+            display: table-row;
+        }
+
+        .option-cell {
+            display: table-cell;
+            padding: 2px 4px;
+            font-size: 9.5pt;
+            width: 50%;
+        }
+
+        /* Workspace hint area */
+        .diagram-space {
+            margin-top: 8px;
+            border: 1px dashed #cbd5e1;
+            background-color: #f8fafc;
+            border-radius: 4px;
+            height: 45px;
+            text-align: center;
+            line-height: 45px;
+            color: #a0aec0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 8pt;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Taller Práctico: Diagramas de Venn</h1>
+        <h2>Aplicación de la Teoría de Conjuntos en la Solución de Problemas</h2>
+    </div>
+
+    <div class="student-info">
+        <div class="student-info-row">
+            <div class="student-info-cell" style="width: 10%;"><strong>Estudiante:</strong></div>
+            <div class="student-info-cell line" style="width: 50%;"></div>
+            <div class="student-info-cell" style="width: 8%; text-align: right;"><strong>Fecha:</strong></div>
+            <div class="student-info-cell line" style="width: 15%;"></div>
+            <div class="student-info-cell" style="width: 7%; text-align: right;"><strong>Curso:</strong></div>
+            <div class="student-info-cell line" style="width: 10%;"></div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 1 -->
+    <div class="exercise-card">
+        <div class="exercise-title">Ejercicio 1</div>
+        <div class="exercise-statement">
+            <strong>Preguntas 1.1 - 1.2.</strong> En la Facultad de Ciencias Exactas y Naturales se tiene un grupo de 140 estudiantes que cursaron simultáneamente las asignaturas de Matemáticas y Biología. Se observó que:
+        </div>
+        <ul class="data-list">
+            <li>60 ganaron Matemáticas.</li>
+            <li>45 ganaron Biología.</li>
+            <li>20 ganaron ambas asignaturas (Matemáticas y Biología).</li>
+        </ul>
+        <div class="questions-container">
+            <div class="question-col">
+                <div class="question-text">1.1. El número de estudiantes que ganaron Matemáticas pero no ganaron Biología es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 20</div>
+                        <div class="option-cell">(b) 25</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 40</div>
+                        <div class="option-cell">(d) 85</div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-col">
+                <div class="question-text">1.2. El número de estudiantes que reprobaron ambas asignaturas es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 20</div>
+                        <div class="option-cell">(b) 35</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 55</div>
+                        <div class="option-cell">(d) 85</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="diagram-space">Espacio para Diagrama de Venn y Procedimiento</div>
+    </div>
+
+    <!-- EJERCICIO 2 -->
+    <div class="exercise-card">
+        <div class="exercise-title">Ejercicio 2</div>
+        <div class="exercise-statement">
+            <strong>Preguntas 2.1 - 2.2.</strong> Se realizó una encuesta a un grupo de 200 personas sobre sus hábitos de consumo de bebidas por las mañanas (Café y Té). Se obtuvieron los siguientes datos:
+        </div>
+        <ul class="data-list">
+            <li>120 personas toman Café.</li>
+            <li>90 personas toman Té.</li>
+            <li>50 personas toman ambas bebidas.</li>
+        </ul>
+        <div class="questions-container">
+            <div class="question-col">
+                <div class="question-text">2.1. El número de personas que toman únicamente Té es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 40</div>
+                        <div class="option-cell">(b) 50</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 70</div>
+                        <div class="option-cell">(d) 90</div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-col">
+                <div class="question-text">2.2. El número de personas que no toman ninguna de las dos bebidas es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 20</div>
+                        <div class="option-cell">(b) 30</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 40</div>
+                        <div class="option-cell">(d) 50</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="diagram-space">Espacio para Diagrama de Venn y Procedimiento</div>
+    </div>
+
+    <!-- EJERCICIO 3 -->
+    <div class="exercise-card">
+        <div class="exercise-title">Ejercicio 3</div>
+        <div class="exercise-statement">
+            <strong>Preguntas 3.1 - 3.2.</strong> Un grupo de 180 atletas universitarios fue evaluado respecto a la práctica de dos deportes: Fútbol y Baloncesto. Los resultados indicaron que:
+        </div>
+        <ul class="data-list">
+            <li>110 atletas practican Fútbol.</li>
+            <li>85 atletas practican Baloncesto.</li>
+            <li>35 atletas no practican ninguno de estos dos deportes.</li>
+        </ul>
+        <div class="questions-container">
+            <div class="question-col">
+                <div class="question-text">3.1. El número de atletas que practican ambos deportes es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 30</div>
+                        <div class="option-cell">(b) 45</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 50</div>
+                        <div class="option-cell">(d) 60</div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-col">
+                <div class="question-text">3.2. El número de atletas que practican solo uno de los dos deportes es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 60</div>
+                        <div class="option-cell">(b) 85</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 95</div>
+                        <div class="option-cell">(d) 110</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="diagram-space">Espacio para Diagrama de Venn y Procedimiento</div>
+    </div>
+
+    <!-- EJERCICIO 4 -->
+    <div class="exercise-card">
+        <div class="exercise-title">Ejercicio 4</div>
+        <div class="exercise-statement">
+            <strong>Preguntas 4.1 - 4.2.</strong> En un instituto de lenguas extranjeras hay un grupo de 150 estudiantes matriculados en los módulos de Inglés y Francés. Se constató que:
+        </div>
+        <ul class="data-list">
+            <li>95 estudiantes cursan Inglés.</li>
+            <li>65 estudiantes cursan Francés.</li>
+            <li>25 estudiantes cursan ambos idiomas.</li>
+        </ul>
+        <div class="questions-container">
+            <div class="question-col">
+                <div class="question-text">4.1. El número de estudiantes que cursan exactamente un solo idioma es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 70</div>
+                        <div class="option-cell">(b) 95</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 110</div>
+                        <div class="option-cell">(d) 135</div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-col">
+                <div class="question-text">4.2. El número de estudiantes que no cursan ni Inglés ni Francés es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 15</div>
+                        <div class="option-cell">(b) 25</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 35</div>
+                        <div class="option-cell">(d) 40</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="diagram-space">Espacio para Diagrama de Venn y Procedimiento</div>
+    </div>
+
+    <!-- EJERCICIO 5 -->
+    <div class="exercise-card">
+        <div class="exercise-title">Ejercicio 5</div>
+        <div class="exercise-statement">
+            <strong>Preguntas 5.1 - 5.2.</strong> Una empresa de desarrollo de software aplicó una prueba técnica a 300 aspirantes en las áreas de Programación en Python y Manejo de Bases de Datos SQL. Se registró que:
+        </div>
+        <ul class="data-list">
+            <li>190 aspirantes aprobaron la prueba de Python.</li>
+            <li>140 aspirantes aprobaron la prueba de SQL.</li>
+            <li>60 aspirantes no aprobaron ninguna de las dos pruebas.</li>
+        </ul>
+        <div class="questions-container">
+            <div class="question-col">
+                <div class="question-text">5.1. El número de aspirantes que aprobaron ambas pruebas es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 50</div>
+                        <div class="option-cell">(b) 70</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 90</div>
+                        <div class="option-cell">(d) 100</div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-col">
+                <div class="question-text">5.2. El número de aspirantes que aprobaron SQL pero no aprobaron Python es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 40</div>
+                        <div class="option-cell">(b) 50</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 80</div>
+                        <div class="option-cell">(d) 100</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="diagram-space">Espacio para Diagrama de Venn y Procedimiento</div>
+    </div>
+
+    <!-- EJERCICIO 6 -->
+    <div class="exercise-card">
+        <div class="exercise-title">Ejercicio 6</div>
+        <div class="exercise-statement">
+            <strong>Preguntas 6.1 - 6.2.</strong> En un club social de 250 miembros se realizó un censo sobre los medios de transporte utilizados para asistir a la sede (Bicicleta y Automóvil). Se determinó que:
+        </div>
+        <ul class="data-list">
+            <li>130 miembros utilizan Bicicleta.</li>
+            <li>160 miembros utilizan Automóvil.</li>
+            <li>80 miembros utilizan ambos medios de transporte.</li>
+        </ul>
+        <div class="questions-container">
+            <div class="question-col">
+                <div class="question-text">6.1. El número de miembros que utilizan únicamente Automóvil es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 50</div>
+                        <div class="option-cell">(b) 70</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 80</div>
+                        <div class="option-cell">(d) 110</div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-col">
+                <div class="question-text">6.2. El número de miembros que no utilizan ninguno de los dos medios es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 30</div>
+                        <div class="option-cell">(b) 40</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 50</div>
+                        <div class="option-cell">(d) 60</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="diagram-space">Espacio para Diagrama de Venn y Procedimiento</div>
+    </div>
+
+    <!-- EJERCICIO 7 -->
+    <div class="exercise-card">
+        <div class="exercise-title">Ejercicio 7</div>
+        <div class="exercise-statement">
+            <strong>Preguntas 7.1 - 7.2.</strong> Una firma de investigación de mercados analizó el uso de plataformas digitales en un grupo de 500 consumidores. Al indagar sobre Instagram y TikTok, se halló que:
+        </div>
+        <ul class="data-list">
+            <li>320 consumidores usan Instagram.</li>
+            <li>270 consumidores usan TikTok.</li>
+            <li>150 consumidores usan ambas plataformas.</li>
+        </ul>
+        <div class="questions-container">
+            <div class="question-col">
+                <div class="question-text">7.1. El número de consumidores que usan al menos una de las dos redes sociales es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 380</div>
+                        <div class="option-cell">(b) 440</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 470</div>
+                        <div class="option-cell">(d) 500</div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-col">
+                <div class="question-text">7.2. El número de consumidores que usan Instagram pero no usan TikTok es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 120</div>
+                        <div class="option-cell">(b) 150</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 170</div>
+                        <div class="option-cell">(d) 220</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="diagram-space">Espacio para Diagrama de Venn y Procedimiento</div>
+    </div>
+
+    <!-- EJERCICIO 8 -->
+    <div class="exercise-card">
+        <div class="exercise-title">Ejercicio 8</div>
+        <div class="exercise-statement">
+            <strong>Preguntas 8.1 - 8.2.</strong> Un colegio cuenta con un cuerpo docente de 120 profesores. Al revisar sus estudios de posgrado en Maestría y Doctorado, la dirección académica constató que:
+        </div>
+        <ul class="data-list">
+            <li>75 profesores tienen título de Maestría.</li>
+            <li>30 profesores tienen título de Doctorado.</li>
+            <li>15 profesores poseen ambos posgrados (Maestría y Doctorado).</li>
+        </ul>
+        <div class="questions-container">
+            <div class="question-col">
+                <div class="question-text">8.1. El número de profesores que no poseen ni Maestría ni Doctorado es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 15</div>
+                        <div class="option-cell">(b) 25</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 30</div>
+                        <div class="option-cell">(d) 45</div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-col">
+                <div class="question-text">8.2. El número de profesores que tienen únicamente Maestría es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 45</div>
+                        <div class="option-cell">(b) 60</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 75</div>
+                        <div class="option-cell">(d) 90</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="diagram-space">Espacio para Diagrama de Venn y Procedimiento</div>
+    </div>
+
+    <!-- EJERCICIO 9 -->
+    <div class="exercise-card">
+        <div class="exercise-title">Ejercicio 9</div>
+        <div class="exercise-statement">
+            <strong>Preguntas 9.1 - 9.2.</strong> En un torneo de videojuegos con 220 competidores inscritos, los organizadores analizaron la participación en las categorías de Estrategia y Acción. Se observó que:
+        </div>
+        <ul class="data-list">
+            <li>140 competidores participan en la categoría de Estrategia.</li>
+            <li>115 competidores participan en la categoría de Acción.</li>
+            <li>45 competidores no están inscritos en ninguna de estas dos categorías.</li>
+        </ul>
+        <div class="questions-container">
+            <div class="question-col">
+                <div class="question-text">9.1. El número de competidores inscritos en ambas categorías es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 65</div>
+                        <div class="option-cell">(b) 70</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 80</div>
+                        <div class="option-cell">(d) 95</div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-col">
+                <div class="question-text">9.2. El número de competidores inscritos exclusivamente en la categoría de Estrategia es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 35</div>
+                        <div class="option-cell">(b) 60</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 75</div>
+                        <div class="option-cell">(d) 80</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="diagram-space">Espacio para Diagrama de Venn y Procedimiento</div>
+    </div>
+
+    <!-- EJERCICIO 10 -->
+    <div class="exercise-card">
+        <div class="exercise-title">Ejercicio 10</div>
+        <div class="exercise-statement">
+            <strong>Preguntas 10.1 - 10.2.</strong> Una clínica veterinaria atendió en un mes un total de 160 mascotas. Al revisar los registros de vacunación preventiva (Rabia y Parvovirus), se registró lo siguiente:
+        </div>
+        <ul class="data-list">
+            <li>90 mascotas recibieron la vacuna contra la Rabia.</li>
+            <li>70 mascotas recibieron la vacuna contra el Parvovirus.</li>
+            <li>25 mascotas recibieron ambas vacunas.</li>
+        </ul>
+        <div class="questions-container">
+            <div class="question-col">
+                <div class="question-text">10.1. El número de mascotas que recibieron únicamente la vacuna contra el Parvovirus es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 35</div>
+                        <div class="option-cell">(b) 45</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 65</div>
+                        <div class="option-cell">(d) 70</div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-col">
+                <div class="question-text">10.2. El número de mascotas que no recibieron ninguna de estas dos vacunas es:</div>
+                <div class="options-grid">
+                    <div class="option-row">
+                        <div class="option-cell">(a) 15</div>
+                        <div class="option-cell">(b) 20</div>
+                    </div>
+                    <div class="option-row">
+                        <div class="option-cell">(c) 25</div>
+                        <div class="option-cell">(d) 30</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="diagram-space">Espacio para Diagrama de Venn y Procedimiento</div>
+    </div>
+
+</body>
+</html>
+"""
+
+html_path = "taller_diagramas_venn.html"
+pdf_path = "taller_diagramas_venn.pdf"
+
+with open(html_path, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+HTML(html_path).write_pdf(pdf_path)
+print("PDF generado correctamente:", pdf_path)
