@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Parcial de Razonamiento Lógico y Matemáticas</title>
+    <style>
+        /* Configuración de la página en A4 e impresión */
+        @page {
+            size: A4;
+            margin: 15mm 15mm 15mm 15mm;
+            background-color: #fcfcfd;
+            @bottom-right {
+                content: "Página " counter(page) " de " counter(pages);
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 8pt;
+                color: #666;
+            }
+            @bottom-left {
+                content: "Universidad de Antioquia - Examen Parcial";
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 8pt;
+                color: #666;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 10pt;
+            line-height: 1.4;
+            color: #111;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Encabezado Estilo Examen Universitario */
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-bottom: 2px solid #1a365d;
+            margin-bottom: 12px;
+        }
+
+        .header-table td {
+            vertical-align: middle;
+            padding: 4px 8px;
+        }
+
+        .university-title {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: bold;
+            font-size: 13pt;
+            color: #1a365d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-title {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 9pt;
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        /* Caja de datos del estudiante */
+        .exam-info-box {
+            border: 1px solid #cbd5e0;
+            background-color: #f7fafc;
+            padding: 8px 12px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 9pt;
+        }
+
+        .info-grid {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-grid td {
+            padding: 3px 6px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .fill-line {
+            border-bottom: 1px dotted #718096;
+            display: inline-block;
+            width: 80%;
+        }
+
+        .instructions {
+            font-size: 8.5pt;
+            font-style: italic;
+            color: #4a5568;
+            border-left: 3px solid #3182ce;
+            padding-left: 8px;
+            margin-bottom: 12px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        /* Layout de preguntas a 2 columnas */
+        .questions-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .questions-table td.col {
+            width: 50%;
+            vertical-align: top;
+            padding: 0 8px;
+        }
+
+        .question-block {
+            margin-bottom: 14px;
+            page-break-inside: avoid;
+        }
+
+        .question-text {
+            text-align: justify;
+            margin-bottom: 6px;
+        }
+
+        .question-number {
+            font-weight: bold;
+            color: #1a365d;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .options-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4px;
+            margin-left: 4px;
+        }
+
+        .options-table td {
+            padding: 2px 4px;
+            vertical-align: top;
+        }
+
+        .option-letter {
+            font-weight: bold;
+            width: 22px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 9.5pt;
+        }
+
+        /* Formato matemático */
+        .math {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        /* Gráficos e Ilustraciones SVG */
+        .diagram-container {
+            text-align: center;
+            margin: 6px 0;
+        }
+
+        svg {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO OFICIAL -->
+    <table class="header-table">
+        <tr>
+            <td style="width: 70%;">
+                <div class="university-title">Universidad de Antioquia</div>
+                <div class="sub-title">Vicerrectoría de Docencia — Programa de Admisiones</div>
+                <div class="sub-title">Prueba de Razonamiento Lógico y Matemáticas</div>
+            </td>
+            <td style="width: 30%; text-align: right;">
+                <div style="font-family: 'Helvetica Neue', sans-serif; font-size: 11pt; font-weight: bold; color: #2b6cb0;">PARCIAL EVALUATIVO</div>
+                <div style="font-size: 8pt; color: #718096;">Módulo RL - 10 Preguntas</div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- CAJA DE DATOS DEL ESTUDIANTE -->
+    <div class="exam-info-box">
+        <table class="info-grid">
+            <tr>
+                <td style="width: 60%;"><span class="label">Nombre del Estudiante:</span> <span class="fill-line"></span></td>
+                <td style="width: 40%;"><span class="label">Cédula/Código:</span> <span class="fill-line"></span></td>
+            </tr>
+            <tr>
+                <td><span class="label">Fecha:</span> _______________</td>
+                <td><span class="label">Calificación:</span> _______________</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="instructions">
+        <strong>Instrucciones:</strong> Lea detenidamente cada una de las 10 preguntas. Seleccione la opción correcta (a, b, c o d) para cada enunciado. No se permite el uso de calculadora. Duración: 45 minutos.
+    </div>
+
+    <!-- TABLA DE DOS COLUMNAS DE PREGUNTAS -->
+    <table class="questions-table">
+        <tr>
+            <!-- COLUMNA IZQUIERDA -->
+            <td class="col">
+                
+                <!-- PREGUNTA 1 -->
+                <div class="question-block">
+                    <div class="question-text">
+                        <span class="question-number">1.</span> La proposición <em>"No todos los estudiantes aprobaron el examen de admisión"</em> tiene un significado lógicamente equivalente a:
+                    </div>
+                    <table class="options-table">
+                        <tr><td class="option-letter">a)</td><td>Todos los estudiantes no aprobaron el examen.</td></tr>
+                        <tr><td class="option-letter">b)</td><td>Muchos estudiantes no aprobaron el examen.</td></tr>
+                        <tr><td class="option-letter">c)</td><td>Menos de la mitad de los estudiantes aprobó el examen.</td></tr>
+                        <tr><td class="option-letter">d)</td><td>Al menos un estudiante no aprobó el examen.</td></tr>
+                    </table>
+                </div>
+
+                <!-- PREGUNTA 2 -->
+                <div class="question-block">
+                    <div class="question-text">
+                        <span class="question-number">2.</span> El menor número de dulces que es necesario sacar de una bolsa opaca (que contiene dulces de 5 sabores distintos) para garantizar que al menos dos de ellos tengan sabores iguales es:
+                    </div>
+                    <table class="options-table">
+                        <tr><td class="option-letter">a)</td><td>2</td></tr>
+                        <tr><td class="option-letter">b)</td><td>6</td></tr>
+                        <tr><td class="option-letter">c)</td><td>13</td></tr>
+                        <tr><td class="option-letter">d)</td><td>16</td></tr>
+                    </table>
+                </div>
+
+                <!-- PREGUNTA 3 -->
+                <div class="question-block">
+                    <div class="question-text">
+                        <span class="question-number">3.</span> Abel, Boris, Carlos y Darío están sentados alrededor de una mesa cuadrada tomando bebidas. El que se sentó a la izquierda de Boris bebió agua. Abel estaba frente al que bebía vino. Quien se sentaba a la derecha de Darío bebía anís. El del café y el del anís estaban frente a frente. Las bebidas que tomaban Abel, Boris, Carlos y Darío, respectivamente, eran:
+                    </div>
+                    <table class="options-table">
+                        <tr><td class="option-letter">a)</td><td>Agua, vino, anís, café</td></tr>
+                        <tr><td class="option-letter">b)</td><td>Café, vino, agua, anís</td></tr>
+                        <tr><td class="option-letter">c)</td><td>Anís, agua, café, vino</td></tr>
+                        <tr><td class="option-letter">d)</td><td>Agua, café, anís, vino</td></tr>
+                    </table>
+                </div>
+
+                <!-- PREGUNTA 4 -->
+                <div class="question-block">
+                    <div class="question-text">
+                        <span class="question-number">4.</span> En una bolsa opaca se tienen 2 pares de zapatos negros y 2 pares de zapatos blancos. Si cada vez se extrae de la bolsa un solo zapato, el menor número de extracciones que debe hacerse para garantizar que se ha sacado un par de zapatos blancos utilizables (un zapato izquierdo y uno derecho del mismo color) es:
+                    </div>
+                    <table class="options-table">
+                        <tr><td class="option-letter">a)</td><td>4</td></tr>
+                        <tr><td class="option-letter">b)</td><td>5</td></tr>
+                        <tr><td class="option-letter">c)</td><td>6</td></tr>
+                        <tr><td class="option-letter">d)</td><td>7</td></tr>
+                    </table>
+                </div>
+
+                <!-- PREGUNTA 5 -->
+                <div class="question-block">
+                    <div class="question-text">
+                        <span class="question-number">5.</span> Si <span class="math">x = 2</span> y <span class="math">y = −1</span>, entonces el valor de la expresión algebraica:
+                        <div style="text-align:center; margin: 6px 0;">
+                            <span class="math" style="font-size: 11pt;">E = (x² − 2x) / (xy − 2y)</span>
+                        </div>
+                        es igual a:
+                    </div>
+                    <table class="options-table">
+                        <tr><td class="option-letter">a)</td><td>2</td></tr>
+                        <tr><td class="option-letter">b)</td><td>0/0</td></tr>
+                        <tr><td class="option-letter">c)</td><td>1</td></tr>
+                        <tr><td class="option-letter">d)</td><td>-2</td></tr>
+                    </table>
+                </div>
+
+            </td>
+
+            <!-- COLUMNA DERECHA -->
+            <td class="col">
+
+                <!-- PREGUNTA 6 -->
+                <div class="question-block">
+                    <div class="question-text">
+                        <span class="question-number">6.</span> El triángulo <span class="math">PQT</span> puede rotarse (girarse) en el plano hasta coincidir exactamente con el triángulo <span class="math">SQR</span>.
+                    </div>
+                    <div class="diagram-container">
+                        <svg width="170" height="110" viewBox="0 0 170 110" style="border: 1px solid #e2e8f0; border-radius: 4px;">
+                            <!-- Triángulo PQT -->
+                            <polygon points="40,10 40,55 95,55" fill="none" stroke="#2b6cb0" stroke-width="2"/>
+                            <!-- Triángulo SQR -->
+                            <polygon points="75,55 40,55 40,100" fill="none" stroke="#2b6cb0" stroke-width="2"/>
+                            <!-- Etiquetas de puntos -->
+                            <text x="36" y="8" font-family="sans-serif" font-size="10" font-weight="bold">P</text>
+                            <text x="26" y="58" font-family="sans-serif" font-size="10" font-weight="bold">Q</text>
+                            <text x="80" y="67" font-family="sans-serif" font-size="10" font-weight="bold">S</text>
+                            <text x="100" y="58" font-family="sans-serif" font-size="10" font-weight="bold">T</text>
+                            <text x="36" y="109" font-family="sans-serif" font-size="10" font-weight="bold">R</text>
+                        </svg>
+                    </div>
+                    <div class="question-text">
+                        El centro de rotación exacto para efectuar dicho movimiento es el punto:
+                    </div>
+                    <table class="options-table">
+                        <tr><td class="option-letter">a)</td><td>P</td></tr>
+                        <tr><td class="option-letter">b)</td><td>Q</td></tr>
+                        <tr><td class="option-letter">c)</td><td>S</td></tr>
+                        <tr><td class="option-letter">d)</td><td>T</td></tr>
+                    </table>
+                </div>
+
+                <!-- PREGUNTA 7 -->
+                <div class="question-block">
+                    <div class="question-text">
+                        <span class="question-number">7.</span> Se prepara una mezcla con 5 litros de pintura roja, 2 litros de pintura azul y 5 litros de pintura amarilla. La proporción (fracción) de pintura roja en la mezcla total obtenida es:
+                    </div>
+                    <table class="options-table">
+                        <tr><td class="option-letter">a)</td><td><span class="math">5 / 12</span></td></tr>
+                        <tr><td class="option-letter">b)</td><td><span class="math">5 / 7</span></td></tr>
+                        <tr><td class="option-letter">c)</td><td><span class="math">2 / 12</span></td></tr>
+                        <tr><td class="option-letter">d)</td><td><span class="math">12 / 5</span></td></tr>
+                    </table>
+                </div>
+
+                <!-- PREGUNTA 8 -->
+                <div class="question-block">
+                    <div class="question-text">
+                        <span class="question-number">8.</span> Una persona que pesa 120 kg decide hacer una dieta. Se sabe que el 40% de su masa total está conformada por grasa. Si durante el primer mes de dieta pierde el 60% de su grasa y mantiene los otros índices intactos, al finalizar el primer mes su peso es:
+                    </div>
+                    <table class="options-table">
+                        <tr><td class="option-letter">a)</td><td>89,6 kg</td></tr>
+                        <tr><td class="option-letter">b)</td><td>91,2 kg</td></tr>
+                        <tr><td class="option-letter">c)</td><td>96,0 kg</td></tr>
+                        <tr><td class="option-letter">d)</td><td>100,0 kg</td></tr>
+                    </table>
+                </div>
+
+                <!-- PREGUNTA 9 -->
+                <div class="question-block">
+                    <div class="question-text">
+                        <span class="question-number">9.</span> Los puntos adyacentes de la siguiente trama ortogonal se distribuyen horizontal y verticalmente a una distancia de 1 metro uno del otro:
+                    </div>
+                    <div class="diagram-container">
+                        <svg width="150" height="90" viewBox="0 0 150 90" style="border: 1px solid #e2e8f0; border-radius: 4px;">
+                            <!-- Polígono -->
+                            <polygon points="45,70 45,30 65,30 65,10 85,30 105,30 105,70" fill="#edf2f7" stroke="#2d3748" stroke-width="2"/>
+                            <!-- Puntos de la retícula -->
+                            <circle cx="25" cy="10" r="2" fill="#a0aec0"/><circle cx="45" cy="10" r="2" fill="#a0aec0"/><circle cx="65" cy="10" r="2" fill="#a0aec0"/><circle cx="85" cy="10" r="2" fill="#a0aec0"/><circle cx="105" cy="10" r="2" fill="#a0aec0"/><circle cx="125" cy="10" r="2" fill="#a0aec0"/>
+                            <circle cx="25" cy="30" r="2" fill="#a0aec0"/><circle cx="45" cy="30" r="2" fill="#1a365d"/><circle cx="65" cy="30" r="2" fill="#1a365d"/><circle cx="85" cy="30" r="2" fill="#1a365d"/><circle cx="105" cy="30" r="2" fill="#1a365d"/><circle cx="125" cy="30" r="2" fill="#a0aec0"/>
+                            <circle cx="25" cy="50" r="2" fill="#a0aec0"/><circle cx="45" cy="50" r="2" fill="#1a365d"/><circle cx="65" cy="50" r="2" fill="#a0aec0"/><circle cx="85" cy="50" r="2" fill="#a0aec0"/><circle cx="105" cy="50" r="2" fill="#1a365d"/><circle cx="125" cy="50" r="2" fill="#a0aec0"/>
+                            <circle cx="25" cy="70" r="2" fill="#a0aec0"/><circle cx="45" cy="70" r="2" fill="#1a365d"/><circle cx="65" cy="70" r="2" fill="#1a365d"/><circle cx="85" cy="70" r="2" fill="#1a365d"/><circle cx="105" cy="70" r="2" fill="#1a365d"/><circle cx="125" cy="70" r="2" fill="#a0aec0"/>
+                        </svg>
+                    </div>
+                    <div class="question-text">
+                        El área total del polígono sombreado es:
+                    </div>
+                    <table class="options-table">
+                        <tr><td class="option-letter">a)</td><td><span class="math">5 m²</span></td></tr>
+                        <tr><td class="option-letter">b)</td><td><span class="math">6.5 m²</span></td></tr>
+                        <tr><td class="option-letter">c)</td><td><span class="math">7 m²</span></td></tr>
+                        <tr><td class="option-letter">d)</td><td><span class="math">8 m²</span></td></tr>
+                    </table>
+                </div>
+
+                <!-- PREGUNTA 10 -->
+                <div class="question-block">
+                    <div class="question-text">
+                        <span class="question-number">10.</span> En la figura se ilustra un rectángulo subdividido en 4 rectángulos menores. Los números representan el perímetro de cada sub-rectángulo respectivo:
+                    </div>
+                    <div class="diagram-container">
+                        <svg width="150" height="85" viewBox="0 0 150 85" style="border: 1px solid #cbd5e0;">
+                            <rect x="10" y="10" width="65" height="30" fill="none" stroke="#2d3748" stroke-width="1.5"/>
+                            <rect x="75" y="10" width="65" height="30" fill="none" stroke="#2d3748" stroke-width="1.5"/>
+                            <rect x="10" y="40" width="65" height="35" fill="none" stroke="#2d3748" stroke-width="1.5"/>
+                            <rect x="75" y="40" width="65" height="35" fill="#edf2f7" stroke="#2d3748" stroke-width="1.5"/>
+                            <text x="38" y="30" font-family="sans-serif" font-size="12" font-weight="bold">2</text>
+                            <text x="103" y="30" font-family="sans-serif" font-size="12" font-weight="bold">1</text>
+                            <text x="38" y="63" font-family="sans-serif" font-size="12" font-weight="bold">2</text>
+                            <text x="103" y="63" font-family="sans-serif" font-size="14" font-weight="bold" fill="#c53030">X</text>
+                        </svg>
+                    </div>
+                    <div class="question-text">
+                        El perímetro del rectángulo marcado con la <span class="math">X</span> es:
+                    </div>
+                    <table class="options-table">
+                        <tr><td class="option-letter">a)</td><td>1</td></tr>
+                        <tr><td class="option-letter">b)</td><td>2</td></tr>
+                        <tr><td class="option-letter">c)</td><td>3</td></tr>
+                        <tr><td class="option-letter">d)</td><td>4</td></tr>
+                    </table>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

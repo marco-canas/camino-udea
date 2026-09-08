@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Secuencia de Clase - 8 de Septiembre de 2026</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 12mm 10mm;
+            background-color: #f4f6f9;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            font-size: 9.5pt;
+            line-height: 1.35;
+        }
+
+        /* Header Styling */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-title {
+            font-size: 18pt;
+            font-weight: bold;
+            margin: 0 0 4px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-subtitle {
+            font-size: 11pt;
+            color: #e0e6ed;
+            margin: 0 0 8px 0;
+            font-weight: 300;
+        }
+
+        .header-meta {
+            font-size: 8.5pt;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: white;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            border-left: 5px solid #2a5298;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .section-card.algebra {
+            border-left-color: #e67e22;
+        }
+
+        .section-card.tema6 {
+            border-left-color: #27ae60;
+        }
+
+        .section-title {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #1e3c72;
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+            border-bottom: 1px solid #eef2f5;
+            padding-bottom: 4px;
+        }
+
+        .section-card.algebra .section-title {
+            color: #d35400;
+        }
+
+        .section-card.tema6 .section-title {
+            color: #219150;
+        }
+
+        /* Math Typography */
+        .math {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-style: italic;
+            font-weight: bold;
+            color: #b33939;
+        }
+
+        .math-block {
+            background-color: #f8f9fa;
+            border-left: 3px solid #74b9ff;
+            padding: 6px 10px;
+            margin: 6px 0;
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 10pt;
+        }
+
+        /* Exercise Grid Layout using Table */
+        .exercise-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+
+        .exercise-table td {
+            vertical-align: top;
+            padding: 4px;
+        }
+
+        .exercise-box {
+            background: #ffffff;
+            border: 1px solid #e1e8ed;
+            border-radius: 6px;
+            padding: 8px 10px;
+            height: 100%;
+        }
+
+        .exercise-header {
+            font-weight: bold;
+            color: #2c3e50;
+            background: #eef2f7;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 9pt;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .solution-step {
+            margin-bottom: 4px;
+            padding-left: 8px;
+            border-left: 2px solid #27ae60;
+        }
+
+        .answer-highlight {
+            background-color: #e8f8f5;
+            color: #117a65;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 3px;
+            border: 1px solid #a3e4d7;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        ul {
+            margin: 4px 0;
+            padding-left: 18px;
+        }
+
+        li {
+            margin-bottom: 3px;
+        }
+
+        .badge {
+            background: #2a5298;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 7.5pt;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .badge-orange {
+            background: #e67e22;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-title">Secuencia Didáctica de Clase</div>
+        <div class="header-subtitle">Universidad de Antioquia — Razonamiento Lógico</div>
+        <div class="header-meta">
+            <strong>Fecha:</strong> 8 de Septiembre de 2026 &nbsp;|&nbsp; 
+            <strong>Módulo:</strong> Tema 2.5 (Pág. 49) & Tema 6 (Compensaciones)
+        </div>
+    </div>
+
+    <!-- Módulo Teórico Inicial -->
+    <div class="section-card algebra">
+        <div class="section-title">
+            <span class="badge badge-orange">INICIO (Pág. 49)</span> Tema 2.5: Expresiones Algebraicas
+        </div>
+        <p style="margin: 0 0 6px 0;">Fundamentación matemática necesaria para la resolución de ecuaciones y simplificación de problemas cuantitativos:</p>
+        
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="width: 33%; vertical-align: top; padding-right: 6px;">
+                    <div style="background: #fff5eb; padding: 8px; border-radius: 5px; border: 1px solid #ffe0b2;">
+                        <strong>1. Factorización</strong>
+                        <ul style="margin: 4px 0 0 0; padding-left: 14px; font-size: 8.5pt;">
+                            <li>Factor Común: <span class="math">ax + ay = a(x + y)</span></li>
+                            <li>Trinomio Cuadrado: <span class="math">x² + (a+b)x + ab = (x+a)(x+b)</span></li>
+                            <li>Diferencia de Cuadrados: <span class="math">a² - b² = (a-b)(a+b)</span></li>
+                        </ul>
+                    </div>
+                </td>
+                <td style="width: 33%; vertical-align: top; padding-right: 6px;">
+                    <div style="background: #fff5eb; padding: 8px; border-radius: 5px; border: 1px solid #ffe0b2;">
+                        <strong>2. Ecuaciones por Factorización</strong>
+                        <div style="font-size: 8.5pt; margin-top: 4px;">
+                            Igualar la expresión a cero y aplicar la propiedad del producto nulo:
+                            <div class="math-block" style="padding: 2px 5px; margin: 3px 0;">
+                                Si <span class="math">A · B = 0</span> &rArr; <span class="math">A = 0</span> o <span class="math">B = 0</span>
+                            </div>
+                            <em>Ejemplo:</em> <span class="math">x² - 5x + 6 = 0 &rArr; (x-2)(x-3) = 0</span>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 34%; vertical-align: top;">
+                    <div style="background: #fff5eb; padding: 8px; border-radius: 5px; border: 1px solid #ffe0b2;">
+                        <strong>3. Fórmula General</strong>
+                        <div style="font-size: 8.5pt; margin-top: 4px;">
+                            Para cualquier ecuación cuadrática de la forma <span class="math">ax² + bx + c = 0</span>:
+                            <div class="math-block" style="text-align: center; padding: 3px; margin: 3px 0;">
+                                <span class="math">x = (-b &plusmn; &radic;(b² - 4ac)) / (2a)</span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Tema Principal y Solución de Preguntas -->
+    <div class="section-card tema6">
+        <div class="section-title">
+            <span class="badge">DESARROLLO</span> Tema 6: Compensaciones Aditivas y Multiplicativas
+        </div>
+        <p style="margin: 0 0 8px 0;">Resolución guiada de la guía de ejercicios prácticos aplicando los principios algebraicos y de compensación:</p>
+
+        <!-- Bloque 1: Ejercicios 6.1, 6.2, 6.13 -->
+        <table class="exercise-table">
+            <tr>
+                <td style="width: 33.3%;">
+                    <div class="exercise-box">
+                        <span class="exercise-header">Pregunta 6.1 (Promedio / Aseo)</span>
+                        <div style="font-size: 8.5pt;">
+                            <strong>Contexto:</strong> Pisos 1, 2 y 3 requieren 1, 2 y 3 hrs. Del piso 4 al 20, el tiempo es el promedio de los pisos anteriores.<br/>
+                            <strong>Análisis:</strong>
+                            <div class="solution-step">Piso 1, 2, 3: <span class="math">1, 2, 3</span> hrs (Suma = 6, Promedio = 2 hrs).</div>
+                            <div class="solution-step">Piso 4: Promedios anteriores = <span class="math">6 / 3 = 2</span> hrs.</div>
+                            <div class="solution-step">Dado que cada nuevo piso agrega un valor igual al promedio actual, el promedio global para el piso 17 se mantiene constante en <span class="math">2</span>.</div>
+                            <div class="answer-highlight">Respuesta: (b) 2 horas</div>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 33.3%;">
+                    <div class="exercise-box">
+                        <span class="exercise-header">Pregunta 6.2 (Tanque de Agua)</span>
+                        <div style="font-size: 8.5pt;">
+                            <strong>Contexto:</strong> Bomba sube +2m/día; filtra -0.5m/noche (18 a 24h). Nivel inicial: vacio.<br/>
+                            <strong>Avance diario neto:</strong> <span class="math">+2 - 0.5 = +1.5</span> m/día.<br/>
+                            <strong>Progresión al final del 5° día:</strong>
+                            <div class="solution-step">Día 1 a 4 (4 días completos): <span class="math">4 &times; 1.5 m = 6.00</span> m.</div>
+                            <div class="solution-step">Día 5 (durante el día sube 2 m): <span class="math">6.00 + 2.00 = 8.00</span> m (Máximo alcanzado).</div>
+                            <div class="answer-highlight">Respuesta: (c) 8.00 m</div>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 33.3%;">
+                    <div class="exercise-box">
+                        <span class="exercise-header">Pregunta 6.13 (Números 3 Dígitos)</span>
+                        <div style="font-size: 8.5pt;">
+                            <strong>Contexto:</strong> Números enteros de 100 a 999 con 3 dígitos iguales.<br/>
+                            <strong>Cálculo:</strong>
+                            <div class="solution-step">Total números: <span class="math">999 - 100 + 1 = 900</span>.</div>
+                            <div class="solution-step">Números con 3 dígitos iguales: <span class="math">{111, 222, 333, ..., 999}</span> &rarr; Total = 9 números.</div>
+                            <div class="solution-step">Porcentaje: <span class="math">(9 / 900) &times; 100% = 1%</span>.</div>
+                            <div class="answer-highlight">Respuesta: (a) 1% del total</div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Bloque 2: Preguntas 6.6 y 6.7 -->
+        <table class="exercise-table">
+            <tr>
+                <td style="width: 50%;">
+                    <div class="exercise-box">
+                        <span class="exercise-header">Preguntas 6.6 y 6.7 (Asistentes al Encuentro Deportivo)</span>
+                        <div style="font-size: 8.5pt;">
+                            <strong>Planteamiento de Ecuaciones:</strong>
+                            <ul>
+                                <li>Leones (<span class="math">L</span>): <span class="math">50% T = 0.5T</span>. Resto = <span class="math">0.5T</span>.</li>
+                                <li>Tigres (<span class="math">Ti</span>): <span class="math">50%</span> del resto = <span class="math">0.25T</span>. Restante para otros = <span class="math">0.25T</span>.</li>
+                                <li>Panteras (<span class="math">P</span>): <span class="math">1000</span> asistentes.</li>
+                                <li>Caimanes (<span class="math">C</span>): <span class="math">2P = 2000</span>.</li>
+                                <li>Águilas (<span class="math">A</span>): <span class="math">C = 2000</span>.</li>
+                            </ul>
+                            <strong>Suma de restantes:</strong> <span class="math">P + C + A = 1000 + 2000 + 2000 = 5000</span> (equivale al 25% del total <span class="math">T</span>).<br/>
+                            <strong>Total de Asistentes (6.6):</strong> <span class="math">0.25 T = 5000 &rArr; T = 20.000</span>.<br/>
+                            <strong>Porcentaje de Águilas (6.7):</strong> <span class="math">(2000 / 20000) &times; 100% = 10%</span>.
+                            <div style="margin-top: 4px;">
+                                <span class="answer-highlight">6.6: (a) 20000</span> &nbsp;
+                                <span class="answer-highlight">6.7: (b) 10%</span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 50%;">
+                    <div class="exercise-box">
+                        <span class="exercise-header">Pregunta 6.10 (Equivalencias del Zoológico)</span>
+                        <div style="font-size: 8.5pt;">
+                            <strong>Relaciones Dadas (Compensaciones Multiplicativas):</strong>
+                            <div class="solution-step">17 Osos = 170 Monos &rArr; <span class="math">1 Oso = 10 Monos</span>.</div>
+                            <div class="solution-step">100.000 Ratones = 50 Monos &rArr; <span class="math">1 Mono = 2.000 Ratones</span>.</div>
+                            <div class="solution-step">4 Elefantes = 10 Osos &rArr; <span class="math">1 Elefante = 2.5 Osos</span>.</div>
+                            <strong>Cálculo para 12 Elefantes:</strong>
+                            <div class="solution-step"><span class="math">12 Elefantes = 12 &times; 2.5 Osos = 30 Osos</span>.</div>
+                            <div class="solution-step"><span class="math">30 Osos = 30 &times; 10 Monos = 300 Monos</span>.</div>
+                            <div class="solution-step"><span class="math">300 Monos = 300 &times; 2.000 Ratones = 600.000 Ratones</span>.</div>
+                            <div class="answer-highlight">Respuesta: (a) 600.000</div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Bloque 3: Preguntas 6.8, 6.9, 6.11, 6.12 -->
+        <table class="exercise-table">
+            <tr>
+                <td style="width: 50%;">
+                    <div class="exercise-box">
+                        <span class="exercise-header">Preguntas 6.8 y 6.9 (Escalera)</span>
+                        <div style="font-size: 8.5pt;">
+                            <strong>Datos:</strong> Alto total = <span class="math">3 m = 300 cm</span>; Ancho total = <span class="math">6 m = 600 cm</span>.<br/>
+                            Medida mínima alto (<span class="math">yz</span>) = 15 cm; Medida mínima ancho (<span class="math">xy</span>) = 25 cm.<br/>
+                            <strong>6.8 Máximo número de escalones:</strong>
+                            <div class="solution-step">Por altura: <span class="math">300 cm / 15 cm = 20</span> escalones.</div>
+                            <div class="solution-step">Por ancho: <span class="math">600 cm / 25 cm = 24</span> escalones.</div>
+                            <div class="solution-step">El límite restrictivo lo da la altura máxima de escalones posibles: <strong>20</strong>.</div>
+                            <strong>6.9 Ancho con máximo escalones (20):</strong>
+                            <div class="solution-step">Ancho por escalón = <span class="math">600 cm / 20 = 30 cm</span>.</div>
+                            <div style="margin-top: 4px;">
+                                <span class="answer-highlight">6.8: (a) 20</span> &nbsp;
+                                <span class="answer-highlight">6.9: (b) 30</span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 50%;">
+                    <div class="exercise-box">
+                        <span class="exercise-header">Preguntas 6.11 y 6.12 (Sistemas en Equilibrio)</span>
+                        <div style="font-size: 8.5pt;">
+                            <strong>6.11 Barra Horizonta (Torque/Móvil):</strong>
+                            <div class="solution-step">Bolsa 1 (<span class="math">O</span>): 40 monedas; Bolsa 2 (<span class="math">P</span>): 20 monedas. Punto medio <span class="math">M</span>.</div>
+                            <div class="solution-step">Se pasan 10 de Bolsa 2 a 1 &rArr; Bolsa 1 = 50, Bolsa 2 = 10 (Relación 5 a 1).</div>
+                            <div class="solution-step">Para mantener equilibrio: <span class="math">d(M,P) = 5 &times; d(O,M)</span>.</div>
+                            <div class="answer-highlight" style="margin-bottom:6px;">6.11: (b) La distancia entre M y P sea 5 veces entre O y M.</div>
+                            
+                            <strong>6.12 Pesa en la Mitad del Móvil:</strong>
+                            <div class="solution-step">Pesas disponibles: 1, 2, 3, 4, 5 kg (Suma total = 15 kg).</div>
+                            <div class="solution-step">Las 4 pesas extremas deben repartirse en 2 brazos iguales &rArr; la suma de sus pesos debe ser un número par.</div>
+                            <div class="solution-step">Si la pesa central es 1 kg, las otras suman 14 kg (7 kg cada lado).</div>
+                            <div class="answer-highlight">6.12: (a) Solamente la pesa de 1kg.</div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
