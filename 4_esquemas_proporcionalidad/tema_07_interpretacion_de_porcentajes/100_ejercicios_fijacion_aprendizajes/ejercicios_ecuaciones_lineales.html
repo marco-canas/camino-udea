@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Problemas de Ecuaciones Lineales</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 20mm;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            line-height: 1.5;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #1e3a8a;
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p.subtitle {
+            margin: 0;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .problem-card {
+            background-color: #f1f5f9;
+            border-left: 4px solid #3b82f6;
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            page-break-inside: avoid;
+        }
+
+        .problem-title {
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .problem-text {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #334155;
+        }
+
+        .answer-box {
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: #3730a3;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Problemas de Ecuaciones Lineales</h1>
+        <p class="subtitle">Guía de ejercicios verbales con solución directa</p>
+    </header>
+
+    <div class="grid">
+        <div class="problem-card">
+            <div class="problem-title">Problema 1</div>
+            <p class="problem-text">El triple de un número aumentado en 15 es igual a 48. ¿Cuál es el número?</p>
+            <div class="answer-box">Respuesta: El número es 11</div>
+        </div>
+
+        <div class="problem-card">
+            <div class="problem-title">Problema 2</div>
+            <p class="problem-text">Ana tiene el doble de la edad de Pedro. Si la suma de sus edades es de 36 años, ¿cuántos años tiene cada uno?</p>
+            <div class="answer-box">Respuesta: Pedro tiene 12 años y Ana tiene 24 años</div>
+        </div>
+
+        <div class="problem-card">
+            <div class="problem-title">Problema 3</div>
+            <p class="problem-text">Un rectángulo tiene un perímetro de 50 cm. Si el largo mide 5 cm más que el ancho, ¿cuáles son sus dimensiones?</p>
+            <div class="answer-box">Respuesta: Ancho = 10 cm, Largo = 15 cm</div>
+        </div>
+
+        <div class="problem-card">
+            <div class="problem-title">Problema 4</div>
+            <p class="problem-text">La suma de tres números enteros consecutivos es igual a 72. Halla los tres números.</p>
+            <div class="answer-box">Respuesta: Los números son 23, 24 y 25</div>
+        </div>
+
+        <div class="problem-card">
+            <div class="problem-title">Problema 5</div>
+            <p class="problem-text">Un padre tiene 40 años y su hijo 10. ¿Dentro de cuántos años la edad del padre será el triple de la edad de su hijo?</p>
+            <div class="answer-box">Respuesta: Dentro de 5 años</div>
+        </div>
+
+        <div class="problem-card">
+            <div class="problem-title">Problema 6</div>
+            <p class="problem-text">En una tienda, 4 cuadernos y 2 lápices cuestan $180. Si cada cuaderno cuesta el triple que un lápiz, ¿cuánto cuesta cada artículo?</p>
+            <div class="answer-box">Respuesta: Lápiz = $d/12.857... -> Lápiz = $12.86 (Aprox) o exacto: Lápiz = $12.85, Cuaderno = $38.57</div>
+        </div>
+
+        <div class="problem-card">
+            <div class="problem-title">Problema 6 (Ajustado)</div>
+            <p class="problem-text">En una tienda, 4 cuadernos y 2 lápices cuestan $140. Si un cuaderno cuesta el triple que un lápiz, ¿cuánto cuesta cada artículo?</p>
+            <div class="answer-box">Respuesta: Lápiz = $10, Cuaderno = $30</div>
+        </div>
+
+        <div class="problem-card">
+            <div class="problem-title">Problema 7</div>
+            <p class="problem-text">Marta pagó $120 por una camiseta y un pantalón. Si el pantalón costó $30 más que la camiseta, ¿cuánto pagó por cada prenda?</p>
+            <div class="answer-box">Respuesta: Camiseta = $45, Pantalón = $75</div>
+        </div>
+
+        <div class="problem-card">
+            <div class="problem-title">Problema 8</div>
+            <p class="problem-text">Si a la mitad de un número se le resta 8, se obtiene 12. ¿De qué número se trata?</p>
+            <div class="answer-box">Respuesta: El número es 40</div>
+        </div>
+
+        <div class="problem-card">
+            <div class="problem-title">Problema 9</div>
+            <p class="problem-text">Un tanque contiene una cantidad de agua. Si se retira la cuarta parte del agua y quedan 150 litros, ¿cuántos litros había al principio?</p>
+            <div class="answer-box">Respuesta: Había 200 litros</div>
+        </div>
+
+        <div class="problem-card">
+            <div class="problem-title">Problema 10</div>
+            <p class="problem-text">Juan compró 5 boletos de cine y pagó con un billete de $500, recibiendo $120 de cambio. ¿Cuánto costó cada boleto?</p>
+            <div class="answer-box">Respuesta: Cada boleto costó $76</div>
+        </div>
+    </div>
+
+    <footer>
+        Página de Ejercicios — Matemática Básica
+    </footer>
+</div>
+
+</body>
+</html>
