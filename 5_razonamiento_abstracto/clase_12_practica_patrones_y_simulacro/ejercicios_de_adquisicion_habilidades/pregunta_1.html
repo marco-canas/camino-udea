@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Ejercicios — Áreas, perímetros y volúmenes</title>
+<style>
+  /* ---------- Configuración de página ---------- */
+  @page {
+    size: A4;
+    margin: 18mm 16mm;
+  }
+
+  html, body {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 11.5pt;
+    color: #111;
+    line-height: 1.45;
+    background: #f6f6f6;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hoja blanca centrada en pantalla; en PDF se respeta A4 */
+  .page {
+    background: #fff;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 18mm 16mm;
+    margin: 10mm auto;
+    box-sizing: border-box;
+    box-shadow: 0 4px 14px rgba(0,0,0,.15);
+  }
+
+  /* ---------- Encabezado ---------- */
+  .header {
+    border-bottom: 2px solid #111;
+    padding-bottom: 6px;
+    margin-bottom: 18px;
+  }
+  .tema {
+    font-size: 12pt;
+    letter-spacing: .5px;
+    margin: 0 0 4px 0;
+  }
+  h1 {
+    font-size: 20pt;
+    text-align: center;
+    margin: 6px 0 4px 0;
+    font-weight: normal;
+  }
+  .subtitulo {
+    text-align: center;
+    font-size: 10pt;
+    color: #444;
+    margin: 0 0 8px 0;
+    font-style: italic;
+  }
+  .regla {
+    border: none;
+    border-top: 1px solid #111;
+    margin: 6px 0 4px 0;
+  }
+
+  /* ---------- Ejercicios ---------- */
+  .ejercicio {
+    display: grid;
+    grid-template-columns: 1fr 70mm;
+    gap: 10mm;
+    align-items: start;
+    padding: 14px 0;
+    border-bottom: 1px dashed #bbb;
+    page-break-inside: avoid;
+  }
+  .ejercicio:last-child { border-bottom: none; }
+
+  .enunciado { text-align: justify; }
+  .enunciado .num {
+    font-weight: bold;
+    margin-right: 4px;
+  }
+
+  .opciones {
+    margin: 10px 0 0 18px;
+    list-style: none;
+    padding: 0;
+  }
+  .opciones li {
+    margin: 2px 0;
+    font-size: 11pt;
+  }
+
+  .figura {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4px;
+  }
+
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ---------- Pie de página ---------- */
+  .footer {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 9pt;
+    color: #666;
+    border-top: 1px solid #ccc;
+    padding-top: 6px;
+  }
+
+  /* ---------- Impresión ---------- */
+  @media print {
+    body { background: #fff; }
+    .page {
+      box-shadow: none;
+      margin: 0;
+      width: auto;
+      min-height: 0;
+      padding: 0;
+    }
+    .ejercicio { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ ENCABEZADO ============ -->
+  <div class="header">
+    <p class="tema">Tema 12</p>
+    <hr class="regla" />
+    <h1>Áreas, perímetros y volúmenes</h1>
+    <hr class="regla" />
+    <p class="subtitulo">Seleccione la opción correcta en cada caso.</p>
+  </div>
+
+  <!-- ============ EJERCICIO 1 ============ -->
+  <div class="ejercicio">
+    <div class="enunciado">
+      <span class="num">12.1.</span>
+      En la figura, el área del cuadrado grande es 1 m². Una de sus diagonales
+      se divide en tres segmentos de igual longitud. Si el segmento central es
+      la diagonal del cuadrado sombreado, el área del cuadrado pequeño, en m², es:
+      <ul class="opciones">
+        <li>(a) 1/9</li>
+        <li>(b) 1/6</li>
+        <li>(c) 1/4</li>
+        <li>(d) 1/3</li>
+      </ul>
+    </div>
+    <div class="figura">
+      <svg viewBox="0 0 200 200" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cuadrado grande -->
+        <rect x="20" y="20" width="160" height="160" fill="#ffffff" stroke="#111" stroke-width="1.6"/>
+        <!-- Diagonal -->
+        <line x1="20" y1="20" x2="180" y2="180" stroke="#111" stroke-width="1.4"/>
+        <!-- Marcas de división en la diagonal -->
+        <circle cx="73.33" cy="73.33" r="2" fill="#111"/>
+        <circle cx="126.67" cy="126.67" r="2" fill="#111"/>
+        <!-- Cuadrado sombreado (diagonal = segmento central) -->
+        <rect x="93" y="93" width="14" height="14"
+              transform="rotate(45 100 100)"
+              fill="#a8a8a8" stroke="#111" stroke-width="1.2"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ EJERCICIO 2 ============ -->
+  <div class="ejercicio">
+    <div class="enunciado">
+      <span class="num">12.2.</span>
+      Un rectángulo tiene 12 cm de base y 5 cm de altura. Se traza una de sus
+      diagonales y se sombrea uno de los dos triángulos que se forman.
+      El área del triángulo sombreado, en cm², es:
+      <ul class="opciones">
+        <li>(a) 15</li>
+        <li>(b) 30</li>
+        <li>(c) 60</li>
+        <li>(d) 17</li>
+      </ul>
+    </div>
+    <div class="figura">
+      <svg viewBox="0 0 220 150" width="200" height="140" xmlns="http://www.w3.org/2000/svg">
+        <!-- Rectángulo -->
+        <rect x="20" y="30" width="180" height="90" fill="#ffffff" stroke="#111" stroke-width="1.6"/>
+        <!-- Diagonal -->
+        <line x1="20" y1="30" x2="200" y2="120" stroke="#111" stroke-width="1.4"/>
+        <!-- Triángulo sombreado (inferior) -->
+        <polygon points="20,120 200,120 200,30" fill="#a8a8a8" stroke="#111" stroke-width="1.2"/>
+        <!-- Etiquetas -->
+        <text x="110" y="145" text-anchor="middle" font-size="11" font-family="Georgia">12 cm</text>
+        <text x="8" y="78" text-anchor="end" font-size="11" font-family="Georgia">5 cm</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ EJERCICIO 3 ============ -->
+  <div class="ejercicio">
+    <div class="enunciado">
+      <span class="num">12.3.</span>
+      La figura muestra un triángulo equilátero de lado 6 cm inscrito en una
+      circunferencia. Si el radio de la circunferencia mide 2√3 cm, el área
+      de la región sombreada (fuera del triángulo, dentro del círculo), en cm², es:
+      <ul class="opciones">
+        <li>(a) 12π − 9√3</li>
+        <li>(b) 6π − 9√3</li>
+        <li>(c) 12π − 18</li>
+        <li>(d) 9√3 − 6π</li>
+      </ul>
+    </div>
+    <div class="figura">
+      <svg viewBox="0 0 220 220" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Círculo -->
+        <circle cx="110" cy="110" r="90" fill="#ffffff" stroke="#111" stroke-width="1.6"/>
+        <!-- Triángulo equilátero inscrito -->
+        <polygon points="110,20 187,155 33,155"
+                 fill="#ffffff" stroke="#111" stroke-width="1.4"/>
+        <!-- Región sombreada (anillo entre círculo y triángulo) -->
+        <defs>
+          <mask id="mask1">
+            <rect x="0" y="0" width="220" height="220" fill="white"/>
+            <polygon points="110,20 187,155 33,155" fill="black"/>
+          </mask>
+        </defs>
+        <circle cx="110" cy="110" r="90" fill="#a8a8a8" mask="url(#mask1)"/>
+        <circle cx="110" cy="110" r="90" fill="none" stroke="#111" stroke-width="1.6"/>
+        <polygon points="110,20 187,155 33,155" fill="none" stroke="#111" stroke-width="1.4"/>
+        <!-- Centro -->
+        <circle cx="110" cy="110" r="1.6" fill="#111"/>
+        <text x="118" y="108" font-size="10" font-family="Georgia">O</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ EJERCICIO 4 ============ -->
+  <div class="ejercicio">
+    <div class="enunciado">
+      <span class="num">12.4.</span>
+      Un cubo tiene arista 3 cm. En su interior se inscribe una esfera que es
+      tangente a las seis caras. El volumen de la esfera, en cm³, es:
+      <ul class="opciones">
+        <li>(a) 27π/8</li>
+        <li>(b) 9π/2</li>
+        <li>(c) 27π/2</li>
+        <li>(d) 9π</li>
+      </ul>
+    </div>
+    <div class="figura">
+      <svg viewBox="0 0 220 220" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cubo en perspectiva -->
+        <polygon points="40,70 150,70 150,180 40,180" fill="#f4f4f4" stroke="#111" stroke-width="1.4"/>
+        <polygon points="40,70 80,40 190,40 150,70" fill="#e8e8e8" stroke="#111" stroke-width="1.4"/>
+        <polygon points="150,70 190,40 190,150 150,180" fill="#dcdcdc" stroke="#111" stroke-width="1.4"/>
+        <!-- Esfera inscrita -->
+        <ellipse cx="95" cy="125" rx="52" ry="52" fill="#a8a8a8" opacity="0.55"
+                 stroke="#111" stroke-width="1.2"/>
+        <!-- Etiquetas -->
+        <text x="95" y="200" text-anchor="middle" font-size="11" font-family="Georgia">3 cm</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ EJERCICIO 5 ============ -->
+  <div class="ejercicio">
+    <div class="enunciado">
+      <span class="num">12.5.</span>
+      Un trapecio isósceles tiene bases 10 cm y 6 cm, y altura 4 cm. El área
+      del trapecio, en cm², es:
+      <ul class="opciones">
+        <li>(a) 24</li>
+        <li>(b) 32</li>
+        <li>(c) 40</li>
+        <li>(d) 48</li>
+      </ul>
+    </div>
+    <div class="figura">
+      <svg viewBox="0 0 220 150" width="200" height="140" xmlns="http://www.w3.org/2000/svg">
+        <!-- Trapecio -->
+        <polygon points="30,120 190,120 160,40 60,40"
+                 fill="#a8a8a8" stroke="#111" stroke-width="1.6"/>
+        <!-- Altura -->
+        <line x1="110" y1="40" x2="110" y2="120" stroke="#111" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="118" y="82" font-size="11" font-family="Georgia">4 cm</text>
+        <!-- Bases -->
+        <text x="110" y="140" text-anchor="middle" font-size="11" font-family="Georgia">10 cm</text>
+        <text x="110" y="32" text-anchor="middle" font-size="11" font-family="Georgia">6 cm</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ EJERCICIO 6 ============ -->
+  <div class="ejercicio">
+    <div class="enunciado">
+      <span class="num">12.6.</span>
+      En un círculo de radio 5 cm se traza un cuadrado inscrito. El área de
+      la región sombreada (fuera del cuadrado, dentro del círculo), en cm², es:
+      <ul class="opciones">
+        <li>(a) 25π − 50</li>
+        <li>(b) 25π − 25</li>
+        <li>(c) 50 − 25π</li>
+        <li>(d) 10π − 25</li>
+      </ul>
+    </div>
+    <div class="figura">
+      <svg viewBox="0 0 220 220" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Círculo -->
+        <circle cx="110" cy="110" r="90" fill="#ffffff" stroke="#111" stroke-width="1.6"/>
+        <!-- Cuadrado inscrito -->
+        <polygon points="110,20 200,110 110,200 20,110"
+                 fill="#ffffff" stroke="#111" stroke-width="1.4"/>
+        <!-- Región sombreada -->
+        <defs>
+          <mask id="mask2">
+            <rect x="0" y="0" width="220" height="220" fill="white"/>
+            <polygon points="110,20 200,110 110,200 20,110" fill="black"/>
+          </mask>
+        </defs>
+        <circle cx="110" cy="110" r="90" fill="#a8a8a8" mask="url(#mask2)"/>
+        <circle cx="110" cy="110" r="90" fill="none" stroke="#111" stroke-width="1.6"/>
+        <polygon points="110,20 200,110 110,200 20,110" fill="none" stroke="#111" stroke-width="1.4"/>
+        <!-- Radio -->
+        <line x1="110" y1="110" x2="200" y2="110" stroke="#111" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="155" y="105" font-size="11" font-family="Georgia">5 cm</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ EJERCICIO 7 ============ -->
+  <div class="ejercicio">
+    <div class="enunciado">
+      <span class="num">12.7.</span>
+      Un prisma recto de base cuadrada tiene lado 4 cm y altura 9 cm. El área
+      total del prisma, en cm², es:
+      <ul class="opciones">
+        <li>(a) 144</li>
+        <li>(b) 160</li>
+        <li>(c) 176</li>
+        <li>(d) 180</li>
+      </ul>
+    </div>
+    <div class="figura">
+      <svg viewBox="0 0 220 220" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Prisma -->
+        <polygon points="50,70 140,70 140,190 50,190" fill="#f4f4f4" stroke="#111" stroke-width="1.4"/>
+        <polygon points="50,70 90,40 180,40 140,70" fill="#e8e8e8" stroke="#111" stroke-width="1.4"/>
+        <polygon points="140,70 180,40 180,160 140,190" fill="#dcdcdc" stroke="#111" stroke-width="1.4"/>
+        <!-- Etiquetas -->
+        <text x="95" y="210" text-anchor="middle" font-size="11" font-family="Georgia">4 cm</text>
+        <text x="188" y="125" font-size="11" font-family="Georgia">9 cm</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ EJERCICIO 8 ============ -->
+  <div class="ejercicio">
+    <div class="enunciado">
+      <span class="num">12.8.</span>
+      En un triángulo rectángulo, los catetos miden 6 cm y 8 cm. Sobre cada
+      cateto se construye un cuadrado y sobre la hipotenusa otro. La suma de
+      las áreas de los cuadrados sobre los catetos es:
+      <ul class="opciones">
+        <li>(a) 48 cm²</li>
+        <li>(b) 100 cm²</li>
+        <li>(c) 64 cm²</li>
+        <li>(d) 36 cm²</li>
+      </ul>
+    </div>
+    <div class="figura">
+      <svg viewBox="0 0 240 220" width="200" height="180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Triángulo rectángulo: catetos 6 (vertical) y 8 (horizontal) -->
+        <!-- Vértices: A(40,180), B(160,180), C(40,60) -->
+        <polygon points="40,180 160,180 40,60" fill="#f4f4f4" stroke="#111" stroke-width="1.4"/>
+        <!-- Cuadrado sobre cateto horizontal (8) -->
+        <rect x="40" y="180" width="120" height="40" fill="#a8a8a8" stroke="#111" stroke-width="1.2"/>
+        <!-- Cuadrado sobre cateto vertical (6) -->
+        <rect x="-20" y="60" width="60" height="120" fill="#c8c8c8" stroke="#111" stroke-width="1.2"/>
+        <!-- Ángulo recto -->
+        <polyline points="40,170 50,170 50,180" fill="none" stroke="#111" stroke-width="1.2"/>
+        <!-- Etiquetas -->
+        <text x="100" y="205" text-anchor="middle" font-size="11" font-family="Georgia">8 cm</text>
+        <text x="25" y="125" text-anchor="middle" font-size="11" font-family="Georgia" transform="rotate(-90 25 125)">6 cm</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ EJERCICIO 9 ============ -->
+  <div class="ejercicio">
+    <div class="enunciado">
+      <span class="num">12.9.</span>
+      Un cilindro circular recto tiene radio 3 cm y altura 10 cm. El volumen
+      del cilindro, en cm³, es:
+      <ul class="opciones">
+        <li>(a) 30π</li>
+        <li>(b) 60π</li>
+        <li>(c) 90π</li>
+        <li>(d) 120π</li>
+      </ul>
+    </div>
+    <div class="figura">
+      <svg viewBox="0 0 200 220" width="160" height="180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cuerpo del cilindro -->
+        <rect x="40" y="50" width="120" height="140" fill="#dcdcdc" stroke="#111" stroke-width="1.4"/>
+        <!-- Base superior (elipse) -->
+        <ellipse cx="100" cy="50" rx="60" ry="18" fill="#f4f4f4" stroke="#111" stroke-width="1.4"/>
+        <!-- Base inferior (elipse) -->
+        <ellipse cx="100" cy="190" rx="60" ry="18" fill="#c8c8c8" stroke="#111" stroke-width="1.4"/>
+        <!-- Radio -->
+        <line x1="100" y1="50" x2="160" y2="50" stroke="#111" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="130" y="45" font-size="11" font-family="Georgia">3 cm</text>
+        <!-- Altura -->
+        <line x1="185" y1="50" x2="185" y2="190" stroke="#111" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="190" y="125" font-size="11" font-family="Georgia">10 cm</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ EJERCICIO 10 ============ -->
+  <div class="ejercicio">
+    <div class="enunciado">
+      <span class="num">12.10.</span>
+      En un cuadrado de lado 4 cm se traza una circunferencia inscrita. El
+      área de la región comprendida entre el cuadrado y la circunferencia,
+      en cm², es:
+      <ul class="opciones">
+        <li>(a) 16 − 4π</li>
+        <li>(b) 16 − 2π</li>
+        <li>(c) 8 − 4π</li>
+        <li>(d) 16 − π</li>
+      </ul>
+    </div>
+    <div class="figura">
+      <svg viewBox="0 0 220 220" width="180" height="180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cuadrado -->
+        <rect x="20" y="20" width="180" height="180" fill="#ffffff" stroke="#111" stroke-width="1.6"/>
+        <!-- Circunferencia inscrita -->
+        <circle cx="110" cy="110" r="90" fill="#ffffff" stroke="#111" stroke-width="1.4"/>
+        <!-- Región sombreada entre cuadrado y círculo -->
+        <defs>
+          <mask id="mask3">
+            <rect x="0" y="0" width="220" height="220" fill="white"/>
+            <circle cx="110" cy="110" r="90" fill="black"/>
+          </mask>
+        </defs>
+        <rect x="20" y="20" width="180" height="180" fill="#a8a8a8" mask="url(#mask3)"/>
+        <rect x="20" y="20" width="180" height="180" fill="none" stroke="#111" stroke-width="1.6"/>
+        <circle cx="110" cy="110" r="90" fill="none" stroke="#111" stroke-width="1.4"/>
+        <!-- Etiquetas -->
+        <text x="110" y="215" text-anchor="middle" font-size="11" font-family="Georgia">4 cm</text>
+        <line x1="110" y1="110" x2="200" y2="110" stroke="#111" stroke-width="1.2" stroke-dasharray="4 3"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ PIE ============ -->
+  <div class="footer">
+    Tema 12 — Áreas, perímetros y volúmenes · Seleccione la opción correcta
+  </div>
+
+</div>
+</body>
+</html>

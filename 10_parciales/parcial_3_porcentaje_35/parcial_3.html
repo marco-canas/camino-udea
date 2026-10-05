@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Taller de Razonamiento Lógico y Matemático</title>
+    <style>
+        @page { 
+            size: A4 portrait;
+            margin: 0; 
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        
+        body { 
+            margin: 0 auto;
+            padding: 0;
+            background-color: #ffffff; 
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #1e293b;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 16mm 18mm 12mm 18mm;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            box-sizing: border-box;
+            page-break-after: always;
+            break-after: page;
+        }
+
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .page-footer {
+            margin-top: 4mm;
+            padding-top: 3mm;
+            border-top: 1px solid #cbd5e1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 8.5pt;
+            color: #64748b;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        /* Header Layout */
+        .header-banner {
+            border-bottom: 2px solid #0f172a;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .doc-title {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #0f172a;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .doc-subtitle {
+            font-size: 9.5pt;
+            color: #475569;
+            margin-top: 2px;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .student-info {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 9pt;
+            border: 1px solid #cbd5e1;
+            background-color: #f8fafc;
+            padding: 6px 12px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 12px;
+        }
+        .info-field {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .info-line {
+            flex-grow: 1;
+            border-bottom: 1px dotted #94a3b8;
+            height: 12px;
+        }
+
+        /* Exercise Layout */
+        .exercise {
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+        .exercise-title {
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 3px;
+        }
+        .operator-box {
+            display: inline-block;
+            border: 1.5px solid #334155;
+            background-color: #f8fafc;
+            padding: 4px 12px;
+            margin: 4px 0;
+            border-radius: 4px;
+            font-size: 10pt;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 4px;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 9pt;
+        }
+        .option-item {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Math and Visual Elements */
+        .math {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 6px 0;
+        }
+
+        @media print {
+            body { background: none; }
+            .page {
+                border: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PÁGINA 1 -->
+    <section class="page">
+        <div class="page-content">
+            <div>
+                <header class="header-banner">
+                    <div>
+                        <h1 class="doc-title">Taller de Razonamiento Lógico</h1>
+                        <div class="doc-subtitle">Módulo: Operaciones No Convencionales y Geometría Analítica</div>
+                    </div>
+                    <div style="text-align: right; font-family: system-ui; font-size: 8.5pt; color: #64748b;">
+                        Evaluación Individual
+                    </div>
+                </header>
+
+                <div class="student-info">
+                    <div class="info-field"> Estudiante: <div class="info-line"></div></div>
+                    <div class="info-field"> Fecha: <div class="info-line"></div></div>
+                </div>
+
+                <!-- Ejercicio 1 -->
+                <div class="exercise">
+                    <div class="exercise-title">1. Operaciones No Convencionales</div>
+                    <div>Se define la operación binaria <span class="math">a Δ b</span> mediante la siguiente regla:</div>
+                    <div style="text-align: center;">
+                        <div class="operator-box">
+                            <span class="math">a Δ b = (a<sup>b</sup>) / (b · a)</span> &nbsp;&nbsp;con <span class="math">b ≠ 0</span>
+                        </div>
+                    </div>
+                    <div>El valor exacto de la expresión <span class="math">(2 Δ 3) Δ 1</span> es:</div>
+                    <div class="options-grid">
+                        <div class="option-item">(a) 8/9</div>
+                        <div class="option-item">(b) 6/7</div>
+                        <div class="option-item">(c) 1</div>
+                        <div class="option-item">(d) 9/8</div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 2 Corregido -->
+<div class="exercise">
+    <div class="exercise-title">2. Propiedades Operativas</div>
+    <div>Considerando la operación <span class="math">a Δ b = (a<sup>b</sup>) / (b · a)</span> para números reales no nulos, determine la única afirmación que resulta <strong>verdadera</strong> para todo valor permitido:</div>
+    <div class="options-grid" style="grid-template-columns: 1fr 1fr; gap: 6px 12px; margin-top: 6px;">
+        <div class="option-item">(a) <span class="math">a Δ (b + c) = (a Δ b) + (a Δ c)</span></div>
+        <div class="option-item">(b) <span class="math">a Δ b = b Δ a</span></div>
+        <div class="option-item">(c) <span class="math">(1/a) Δ 1 = 1 / (a Δ 1)</span></div>
+        <div class="option-item">(d) <span class="math">a Δ (1/b) = (1/a) Δ b</span></div>
+    </div>
+</div>
+
+                <!-- Ejercicio 3 -->
+                <div class="exercise">
+                    <div class="exercise-title">3. Problema de Congruencias y Divisiones</div>
+                    <div>Si divido un rollo de cuerda en pedazos de 2 metros me sobra 1 metro; si lo divido en pedazos de 3 metros me sobran 2 metros; y si lo divido en pedazos de 4 metros me sobran 3 metros. Si se sabe que la longitud total de la cuerda es menor que 22 metros, entonces la longitud total en metros es:</div>
+                    <div class="options-grid">
+                        <div class="option-item">(a) 19</div>
+                        <div class="option-item">(b) 17</div>
+                        <div class="option-item">(c) 13</div>
+                        <div class="option-item">(d) 11</div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 4 -->
+                <div class="exercise">
+                    <div class="exercise-title">4. Paridad e Enteros Consecutivos</div>
+                    <div>Suponga que <span class="math">a, b, c</span> son enteros consecutivos tales que <span class="math">a &lt; b &lt; c</span>. Se presentan las siguientes afirmaciones:</div>
+                    <div style="margin: 4px 0 4px 16px;">
+                        I. <span class="math">a · b · c</span> es siempre un número par.<br>
+                        II. <span class="math">a + b + c</span> es siempre un número par.<br>
+                        III. <span class="math">(a + b)(b + c)</span> es siempre un número impar.
+                    </div>
+                    <div>Se puede afirmar con certeza que:</div>
+                    <div class="options-grid">
+                        <div class="option-item">(a) Sólo I es verdadero</div>
+                        <div class="option-item">(b) Sólo II es verdadero</div>
+                        <div class="option-item">(c) Sólo III es verdadero</div>
+                        <div class="option-item">(d) Sólo I y III son verdaderos</div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 5 -->
+                <div class="exercise" style="border-bottom: none;">
+                    <div class="exercise-title">5. Geometría Analítica - Área Sombreada</div>
+                    <div>En el plano cartesiano mostrado a continuación, determine el área de la región sombreada en unidades cuadradas, formada entre los puntos indicados:</div>
+                    <div class="diagram-container">
+                        <svg width="280" height="130" viewBox="-10 -10 240 120">
+                            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#f1f5f9" stroke-width="0.8"></path>
+                            </pattern>
+                            <rect width="220" height="100" fill="url(#grid)"></rect>
+                            
+                            <line x1="180" y1="0" x2="180" y2="105" stroke="#334155" stroke-width="1.5"></line>
+                            <line x1="0" y1="20" x2="210" y2="20" stroke="#334155" stroke-width="1.5"></line>
+                            <polygon points="180,-2 176,4 184,4" fill="#334155"></polygon>
+                            <polygon points="214,20 208,16 208,24" fill="#334155"></polygon>
+
+                            <polygon points="180,100 140,80 100,20 180,20" fill="#94a3b8" fill-opacity="0.6" stroke="#334155" stroke-width="1.5"></polygon>
+                            <line x1="140" y1="80" x2="20" y2="20" stroke="#334155" stroke-width="1.5" stroke-dasharray="3,3"></line>
+                            
+                            <circle cx="180" cy="100" r="3" fill="#0f172a"></circle>
+                            <circle cx="140" cy="80" r="3" fill="#0f172a"></circle>
+                            <circle cx="100" cy="20" r="3" fill="#0f172a"></circle>
+                            <circle cx="20" cy="20" r="3" fill="#0f172a"></circle>
+
+                            <text x="185" y="102" font-size="8" font-family="sans-serif">(0,4)</text>
+                            <text x="145" y="85" font-size="8" font-family="sans-serif">(2,3)</text>
+                            <text x="95" y="12" font-size="8" font-family="sans-serif">(4,0)</text>
+                            <text x="15" y="12" font-size="8" font-family="sans-serif">(8,0)</text>
+                        </svg>
+                    </div>
+                    <div class="options-grid">
+                        <div class="option-item">(a) 14</div>
+                        <div class="option-item">(b) 16</div>
+                        <div class="option-item">(c) 32</div>
+                        <div class="option-item">(d) 10</div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="page-footer">
+                <span>Razonamiento Lógico - Prueba Parcial</span>
+                <span>Página 1 de 2</span>
+            </footer>
+        </div>
+    </section>
+
+    <!-- PÁGINA 2 -->
+    <section class="page">
+        <div class="page-content">
+            <div>
+                <!-- Ejercicio 6 -->
+                <div class="exercise">
+                    <div class="exercise-title">6. Operaciones Matriciales / Tabulares</div>
+                    <div>Se define el operador gráfico mediante la tabla representada. Calcule el valor numérico de la expresión: <span class="math">X = (2 ⊗ 3) ⊗ (1 ⊗ 4)</span>.</div>
+                    <div class="diagram-container">
+                        <svg width="220" height="100" viewBox="0 0 220 100">
+                            <rect x="20" y="10" width="180" height="80" fill="#ffffff" stroke="#334155" stroke-width="1.5"></rect>
+                            <line x1="56" y1="10" x2="56" y2="90" stroke="#334155" stroke-width="1.5"></line>
+                            <line x1="20" y1="30" x2="200" y2="30" stroke="#334155" stroke-width="1.5"></line>
+                            
+                            <line x1="92" y1="10" x2="92" y2="90" stroke="#cbd5e1"></line>
+                            <line x1="128" y1="10" x2="128" y2="90" stroke="#cbd5e1"></line>
+                            <line x1="164" y1="10" x2="164" y2="90" stroke="#cbd5e1"></line>
+                            
+                            <line x1="20" y1="50" x2="200" y2="50" stroke="#cbd5e1"></line>
+                            <line x1="20" y1="70" x2="200" y2="70" stroke="#cbd5e1"></line>
+
+                            <text x="38" y="24" font-size="10" font-weight="bold" font-family="sans-serif" text-anchor="middle">⊗</text>
+                            <text x="74" y="24" font-size="9" font-weight="bold" font-family="sans-serif" text-anchor="middle">1</text>
+                            <text x="110" y="24" font-size="9" font-weight="bold" font-family="sans-serif" text-anchor="middle">2</text>
+                            <text x="146" y="24" font-size="9" font-weight="bold" font-family="sans-serif" text-anchor="middle">3</text>
+                            <text x="182" y="24" font-size="9" font-weight="bold" font-family="sans-serif" text-anchor="middle">4</text>
+
+                            <text x="38" y="44" font-size="9" font-weight="bold" font-family="sans-serif" text-anchor="middle">1</text>
+                            <text x="38" y="64" font-size="9" font-weight="bold" font-family="sans-serif" text-anchor="middle">2</text>
+                            <text x="38" y="84" font-size="9" font-weight="bold" font-family="sans-serif" text-anchor="middle">3</text>
+
+                            <text x="74" y="44" font-size="9" font-family="sans-serif" text-anchor="middle">3</text>
+                            <text x="110" y="44" font-size="9" font-family="sans-serif" text-anchor="middle">4</text>
+                            <text x="146" y="44" font-size="9" font-family="sans-serif" text-anchor="middle">1</text>
+                            <text x="182" y="44" font-size="9" font-family="sans-serif" text-anchor="middle">2</text>
+
+                            <text x="74" y="64" font-size="9" font-family="sans-serif" text-anchor="middle">4</text>
+                            <text x="110" y="64" font-size="9" font-family="sans-serif" text-anchor="middle">1</text>
+                            <text x="146" y="64" font-size="9" font-family="sans-serif" text-anchor="middle">2</text>
+                            <text x="182" y="64" font-size="9" font-family="sans-serif" text-anchor="middle">3</text>
+
+                            <text x="74" y="84" font-size="9" font-family="sans-serif" text-anchor="middle">1</text>
+                            <text x="110" y="84" font-size="9" font-family="sans-serif" text-anchor="middle">2</text>
+                            <text x="146" y="84" font-size="9" font-family="sans-serif" text-anchor="middle">3</text>
+                            <text x="182" y="84" font-size="9" font-family="sans-serif" text-anchor="middle">4</text>
+                        </svg>
+                    </div>
+                    <div class="options-grid">
+                        <div class="option-item">(a) 1</div>
+                        <div class="option-item">(b) 2</div>
+                        <div class="option-item">(c) 3</div>
+                        <div class="option-item">(d) 4</div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 7 -->
+                <div class="exercise">
+                    <div class="exercise-title">7. Relación de Áreas y Geometría Plana</div>
+                    <div>En el rectángulo <span class="math">ABCD</span> de la figura, <span class="math">M</span> es el punto medio del lado <span class="math">BC</span> y <span class="math">N</span> es el punto medio del lado <span class="math">CD</span>. Si el área total del rectángulo es de 48 cm², el área del triángulo sombreado <span class="math">AMN</span> es:</div>
+                    <div class="diagram-container">
+                        <svg width="220" height="100" viewBox="0 0 240 110">
+                            <rect x="20" y="15" width="200" height="80" fill="none" stroke="#334155" stroke-width="1.5"></rect>
+                            <polygon points="20,95 220,55 120,15" fill="#cbd5e1" stroke="#1e293b" stroke-width="1.5"></polygon>
+                            
+                            <text x="10" y="100" font-size="10" font-weight="bold" font-family="sans-serif">A</text>
+                            <text x="10" y="15" font-size="10" font-weight="bold" font-family="sans-serif">B</text>
+                            <text x="225" y="15" font-size="10" font-weight="bold" font-family="sans-serif">C</text>
+                            <text x="225" y="100" font-size="10" font-weight="bold" font-family="sans-serif">D</text>
+                            
+                            <circle cx="220" cy="55" r="2.5" fill="#0f172a"></circle>
+                            <text x="226" y="58" font-size="9" font-family="sans-serif">M</text>
+                            
+                            <circle cx="120" cy="15" r="2.5" fill="#0f172a"></circle>
+                            <text x="118" y="10" font-size="9" font-family="sans-serif">N</text>
+                        </svg>
+                    </div>
+                    <div class="options-grid">
+                        <div class="option-item">(a) 18 cm²</div>
+                        <div class="option-item">(b) 20 cm²</div>
+                        <div class="option-item">(c) 24 cm²</div>
+                        <div class="option-item">(d) 30 cm²</div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 8 -->
+                <div class="exercise">
+                    <div class="exercise-title">8. Lógica Deductiva y Subconjuntos</div>
+                    <div>En un grupo de 40 estudiantes, se sabe que 25 estudian Matemáticas, 18 estudian Física y 8 no estudian ninguna de estas dos materias. ¿Cuántos estudiantes cursan ambas materias simultáneamente?</div>
+                    <div class="options-grid">
+                        <div class="option-item">(a) 9</div>
+                        <div class="option-item">(b) 11</div>
+                        <div class="option-item">(c) 13</div>
+                        <div class="option-item">(d) 15</div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 9 -->
+                <div class="exercise">
+                    <div class="exercise-title">9. Razonamiento Espacial y Polígonos</div>
+                    <div>Determine el perímetro total de la figura escalonada adjunta, sabiendo que todas las esquinas forman ángulos rectos (90°) y sus dimensiones principales son 12 cm de base por 9 cm de altura.</div>
+                    <div class="diagram-container">
+                        <svg width="180" height="90" viewBox="0 0 200 100">
+                            <path d="M 20 85 L 180 85 L 180 60 L 130 60 L 130 35 L 80 35 L 80 15 L 20 15 Z" fill="#f8fafc" stroke="#334155" stroke-width="1.5"></path>
+                            <text x="100" y="97" font-size="9" font-family="sans-serif" text-anchor="middle">12 cm</text>
+                            <text x="10" y="50" font-size="9" font-family="sans-serif" text-anchor="middle">9 cm</text>
+                        </svg>
+                    </div>
+                    <div class="options-grid">
+                        <div class="option-item">(a) 21 cm</div>
+                        <div class="option-item">(b) 36 cm</div>
+                        <div class="option-item">(c) 42 cm</div>
+                        <div class="option-item">(d) 48 cm</div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 10 Corregido -->
+<div class="exercise" style="border-bottom: none;">
+    <div class="exercise-title">10. Operadores Anidados</div>
+    <div>Se define el operador encajado <span class="math">[x]</span> para cualquier número entero como:</div>
+    <div style="text-align: center;">
+        <div class="operator-box">
+            <span class="math">[x] = 2x - 1</span> si <span class="math">x</span> es impar &nbsp;|&nbsp; <span class="math">[x] = x / 2</span> si <span class="math">x</span> es par
+        </div>
+    </div>
+    <div>El resultado final de aplicar la operación anidada <span class="math">[[ [5] ]]</span> equivale a:</div>
+    <div class="options-grid">
+        <div class="option-item">(a) 9</div>
+        <div class="option-item">(b) 17</div>
+        <div class="option-item">(c) 25</div>
+        <div class="option-item">(d) 33</div>
+    </div>
+</div>
+
+            <footer class="page-footer">
+                <span>Razonamiento Lógico - Prueba Parcial</span>
+                <span>Página 2 de 2</span>
+            </footer>
+        </div>
+    </section>
+
+</body>
+</html>

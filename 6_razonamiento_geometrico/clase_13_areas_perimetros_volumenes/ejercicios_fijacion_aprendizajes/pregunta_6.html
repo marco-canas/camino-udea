@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Sólidos de Revolución - PDF</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-strategy: #e8f4f8;
+            --border-strategy: #2980b9;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Contenedor principal simulando hoja A4 */
+        .page-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        /* Encabezado */
+        header {
+            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            text-align: right;
+        }
+
+        header h1 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #7f8c8d;
+            margin: 0;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* Sección de Estrategia */
+        .strategy-box {
+            background-color: var(--bg-strategy);
+            border-left: 5px solid var(--border-strategy);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+            page-break-inside: avoid;
+        }
+
+        .strategy-box h2 {
+            font-family: sans-serif;
+            font-size: 18px;
+            color: var(--border-strategy);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .strategy-box p {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: #fff;
+            padding: 5px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        /* Estilos de los Ejercicios */
+        .exercise {
+            margin-bottom: 50px;
+            page-break-inside: avoid;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 20px;
+        }
+
+        .exercise:last-child {
+            border-bottom: none;
+        }
+
+        .question-text {
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .question-number {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+
+        /* Contenedor de imagen y opciones */
+        .content-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .image-container {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            justify-content: center;
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .options-container {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .option {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+            cursor: default;
+        }
+
+        .option-letter {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-right: 8px;
+        }
+
+        /* Estilos para la hoja de respuestas */
+        .answers-section {
+            page-break-before: always;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border: 1px solid #ddd;
+            margin-top: 50px;
+        }
+
+        .answers-section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .answer-key {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .answer-item {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-color);
+            font-size: 14px;
+        }
+
+        .answer-item strong {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        /* SVG Styles */
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .shape-line {
+            fill: none;
+            stroke: #2c3e50;
+            stroke-width: 2;
+        }
+        
+        .axis-line {
+            stroke: #e74c3c;
+            stroke-width: 1.5;
+            stroke-dasharray: 5;
+        }
+
+        .measure-text {
+            font-family: sans-serif;
+            font-size: 12px;
+            fill: #2c3e50;
+            font-weight: bold;
+        }
+
+        /* Estilos de impresión */
+        @media print {
+            body { 
+                background: white; 
+                padding: 0;
+            }
+            .page-container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+                padding: 0.5cm;
+            }
+            .strategy-box {
+                background-color: #e8f4f8 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .answers-section {
+                background-color: #f4f4f4 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+    <header>
+        <h1>Universidad de Antioquia - Razonamiento Cuantitativo</h1>
+    </header>
+
+    <!-- ESTRATEGIA -->
+    <div class="strategy-box">
+        <h2>💡 Estrategia: Sólidos de Revolución</h2>
+        <p>
+            Cuando un triángulo rectángulo gira alrededor de uno de sus catetos, se genera un <strong>cono</strong>. 
+            El cateto sobre el cual gira se convierte en la <strong>altura (h)</strong> del cono, y el otro cateto se convierte en el <strong>radio (r)</strong> de la base.
+        </p>
+        <p>
+            Si el triángulo gira alrededor de su hipotenusa, se generan dos conos unidos por la base. En estos problemas, generalmente se pide identificar las dimensiones del cono simple.
+        </p>
+        <div style="text-align: center; margin-top: 10px;">
+            <span class="formula">Teorema de Pitágoras: h² + r² = Hipotenusa²</span>
+            <br>
+            <span class="formula">Si gira sobre el cateto mayor → Altura = Cateto Mayor, Radio = Cateto Menor</span>
+        </div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+            * Nota: Identifica siempre cuál es el eje de giro. El eje de giro es la altura del sólido.
+        </p>
+    </div>
+
+    <!-- EJERCICIO 1 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">1.</span> Considere un triángulo rectángulo cuya hipotenusa mide 13 cm y uno de sus catetos mide 5 cm. El sólido generado cuando el triángulo gira en torno a su cateto mayor es:
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="200" height="150" viewBox="0 0 200 150">
+                    <!-- Triángulo -->
+                    <polygon points="50,120 50,30 150,120" fill="#3498db" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+                    <!-- Ángulo recto -->
+                    <polyline points="50,110 60,110 60,120" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                    <!-- Eje de giro (cateto mayor) -->
+                    <line x1="50" y1="10" x2="50" y2="140" class="axis-line" />
+                    <text x="20" y="80" class="measure-text">Eje</text>
+                    <!-- Medidas -->
+                    <text x="90" y="140" class="measure-text">12 cm (Cateto)</text>
+                    <text x="55" y="25" class="measure-text">5 cm</text>
+                    <text x="90" y="60" class="measure-text">13 cm</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> Un cono de altura 5 cm y radio 12 cm</label>
+                <label class="option"><span class="option-letter">(b)</span> Un cono de altura 12 cm y radio 5 cm</label>
+                <label class="option"><span class="option-letter">(c)</span> Un cilindro de radio 5 cm y altura 12 cm</label>
+                <label class="option"><span class="option-letter">(d)</span> Un cono de altura 13 cm y radio 5 cm</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 2 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">2.</span> Un triángulo rectángulo tiene catetos de 6 cm y 8 cm. Si se hace girar alrededor del cateto de 8 cm, el sólido generado es:
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="200" height="150" viewBox="0 0 200 150">
+                    <polygon points="50,120 50,40 130,120" fill="#e67e22" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+                    <polyline points="50,110 60,110 60,120" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                    <!-- Eje vertical -->
+                    <line x1="50" y1="20" x2="50" y2="140" class="axis-line" />
+                    <text x="20" y="80" class="measure-text">Eje (8 cm)</text>
+                    <text x="80" y="140" class="measure-text">6 cm</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> Un cono de altura 6 cm y radio 8 cm</label>
+                <label class="option"><span class="option-letter">(b)</span> Un cono de altura 8 cm y radio 6 cm</label>
+                <label class="option"><span class="option-letter">(c)</span> Un cilindro de radio 6 cm y altura 8 cm</label>
+                <label class="option"><span class="option-letter">(d)</span> Un cono de altura 10 cm y radio 6 cm</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 3 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">3.</span> Considere un triángulo rectángulo cuyos catetos miden 9 cm y 12 cm. El sólido generado al girar en torno al cateto menor es:
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="200" height="150" viewBox="0 0 200 150">
+                    <!-- Triángulo con cateto menor vertical (9) y mayor horizontal (12) -->
+                    <polygon points="50,120 50,40 150,120" fill="#9b59b6" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+                    <polyline points="50,110 60,110 60,120" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                    <line x1="50" y1="20" x2="50" y2="140" class="axis-line" />
+                    <text x="20" y="80" class="measure-text">Eje (9 cm)</text>
+                    <text x="90" y="140" class="measure-text">12 cm</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> Un cono de altura 12 cm y radio 9 cm</label>
+                <label class="option"><span class="option-letter">(b)</span> Un cono de altura 9 cm y radio 12 cm</label>
+                <label class="option"><span class="option-letter">(c)</span> Un cilindro de radio 9 cm y altura 12 cm</label>
+                <label class="option"><span class="option-letter">(d)</span> Un cono de altura 15 cm y radio 9 cm</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 4 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">4.</span> Un triángulo rectángulo tiene una hipotenusa de 10 cm y un cateto de 6 cm. Si gira alrededor del cateto mayor, ¿cuál es la altura del cono generado?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="200" height="150" viewBox="0 0 200 150">
+                    <!-- Cateto1=6, Hip=10, Cateto2=8 -->
+                    <polygon points="60,120 60,40 140,120" fill="#1abc9c" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+                    <polyline points="60,110 70,110 70,120" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                    <line x1="60" y1="20" x2="60" y2="140" class="axis-line" />
+                    <text x="30" y="80" class="measure-text">Eje</text>
+                    <text x="90" y="140" class="measure-text">8 cm</text>
+                    <text x="95" y="60" class="measure-text">10 cm</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 6 cm</label>
+                <label class="option"><span class="option-letter">(b)</span> 8 cm</label>
+                <label class="option"><span class="option-letter">(c)</span> 10 cm</label>
+                <label class="option"><span class="option-letter">(d)</span> 12 cm</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 5 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">5.</span> Si un triángulo rectángulo de catetos 7 cm y 24 cm gira en torno al cateto de 24 cm, el radio de la base del cono es:
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="200" height="150" viewBox="0 0 200 150">
+                    <!-- Catetos 7 y 24 -->
+                    <polygon points="50,120 50,40 180,120" fill="#f1c40f" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+                    <polyline points="50,110 60,110 60,120" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                    <line x1="50" y1="20" x2="50" y2="140" class="axis-line" />
+                    <text x="20" y="80" class="measure-text">Eje (24)</text>
+                    <text x="100" y="140" class="measure-text">7 cm</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 7 cm</label>
+                <label class="option"><span class="option-letter">(b)</span> 24 cm</label>
+                <label class="option"><span class="option-letter">(c)</span> 25 cm</label>
+                <label class="option"><span class="option-letter">(d)</span> 12 cm</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 6 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">6.</span> Un triángulo rectángulo isósceles tiene catetos de 5 cm. Si gira alrededor de uno de sus catetos, el sólido generado tiene:
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="150" height="150" viewBox="0 0 150 150">
+                    <polygon points="50,120 50,50 120,120" fill="#e74c3c" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+                    <polyline points="50,110 60,110 60,120" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                    <line x1="50" y1="30" x2="50" y2="140" class="axis-line" />
+                    <text x="20" y="80" class="measure-text">Eje (5)</text>
+                    <text x="80" y="140" class="measure-text">5 cm</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> Altura 5 cm y radio 5 cm</label>
+                <label class="option"><span class="option-letter">(b)</span> Altura 10 cm y radio 5 cm</label>
+                <label class="option"><span class="option-letter">(c)</span> Altura 5 cm y radio 10 cm</label>
+                <label class="option"><span class="option-letter">(d)</span> Altura 7.07 cm y radio 5 cm</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 7 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">7.</span> Considere un triángulo rectángulo de hipotenusa 17 cm y cateto 8 cm. Si gira alrededor del cateto mayor, el radio del cono es:
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="200" height="150" viewBox="0 0 200 150">
+                    <!-- Cateto1=8, Hip=17, Cateto2=15 -->
+                    <polygon points="60,120 60,40 150,120" fill="#3498db" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+                    <polyline points="60,110 70,110 70,120" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                    <line x1="60" y1="20" x2="60" y2="140" class="axis-line" />
+                    <text x="30" y="80" class="measure-text">Eje (15)</text>
+                    <text x="100" y="140" class="measure-text">8 cm</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 15 cm</label>
+                <label class="option"><span class="option-letter">(b)</span> 8 cm</label>
+                <label class="option"><span class="option-letter">(c)</span> 17 cm</label>
+                <label class="option"><span class="option-letter">(d)</span> 12 cm</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 8 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">8.</span> Un triángulo rectángulo cuyos catetos miden 4 cm y 3 cm gira en torno al cateto de 3 cm. El sólido generado es:
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="150" height="150" viewBox="0 0 150 150">
+                    <polygon points="50,120 50,60 110,120" fill="#2ecc71" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+                    <polyline points="50,110 60,110 60,120" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                    <line x1="50" y1="40" x2="50" y2="140" class="axis-line" />
+                    <text x="20" y="90" class="measure-text">Eje (3)</text>
+                    <text x="70" y="140" class="measure-text">4 cm</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> Un cono de altura 4 cm y radio 3 cm</label>
+                <label class="option"><span class="option-letter">(b)</span> Un cono de altura 3 cm y radio 4 cm</label>
+                <label class="option"><span class="option-letter">(c)</span> Un cilindro de radio 4 cm y altura 3 cm</label>
+                <label class="option"><span class="option-letter">(d)</span> Un cono de altura 5 cm y radio 3 cm</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 9 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">9.</span> Si un triángulo rectángulo de catetos 1 cm y 1 cm gira alrededor de uno de sus catetos, ¿cuál es la altura del cono?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="150" height="150" viewBox="0 0 150 150">
+                    <polygon points="50,120 50,70 100,120" fill="#e67e22" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+                    <polyline points="50,110 60,110 60,120" fill="none" stroke="#2c3e50" stroke-width="1.5"/>
+                    <line x1="50" y1="50" x2="50" y2="140" class="axis-line" />
+                    <text x="20" y="100" class="measure-text">Eje (1)</text>
+                    <text x="60" y="140" class="measure-text">1 cm</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 1 cm</label>
+                <label class="option"><span class="option-letter">(b)</span> 2 cm</label>
+                <label class="option"><span class="option-letter">(c)</span> √2 cm</label>
+                <label class="option"><span class="option-letter">(d)</span> 0.5 cm</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 10 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">10.</span> Un triángulo rectángulo tiene catetos de 15 cm y 20 cm. Si gira alrededor de su hipotenusa, se generan dos conos. ¿Cuál es la altura de cada cono?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="200" height="150" viewBox="0 0 200 150">
+                    <!-- Triángulo rectángulo con hipotenusa como eje -->
+                    <polygon points="40,120 160,120 70,40" fill="#9b59b6" fill-opacity="0.2" stroke="#2c3e50" stroke-width="2"/>
+                    <!-- Altura desde el ángulo recto a la hipotenusa (eje) -->
+                    <line x1="70" y1="40" x2="70" y2="120" class="axis-line" stroke="#e74c3c" />
+                    <text x="75" y="80" class="measure-text">Eje (Hip)</text>
+                    <text x="80" y="135" class="measure-text">20 cm</text>
+                    <text x="80" y="60" class="measure-text">15 cm</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> Altura 12 cm</label>
+                <label class="option"><span class="option-letter">(b)</span> Altura 15 cm</label>
+                <label class="option"><span class="option-letter">(c)</span> Altura 20 cm</label>
+                <label class="option"><span class="option-letter">(d)</span> Altura 25 cm</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESPUESTAS -->
+    <div class="answers-section">
+        <h2>Hoja de Respuestas y Procedimiento</h2>
+        <div class="answer-key">
+            <div class="answer-item">
+                <strong>1. Respuesta: (b) Un cono de altura 12 cm y radio 5 cm</strong>
+                <p>Cateto menor = 5. Cateto mayor = √(13² - 5²) = √(169 - 25) = √144 = 12. Gira sobre el mayor (12), entonces Altura = 12 y Radio = 5.</p>
+            </div>
+            <div class="answer-item">
+                <strong>2. Respuesta: (b) Un cono de altura 8 cm y radio 6 cm</strong>
+                <p>Gira sobre el cateto de 8 cm. Eje = Altura = 8. El otro cateto (6 cm) es el radio de la base.</p>
+            </div>
+            <div class="answer-item">
+                <strong>3. Respuesta: (a) Un cono de altura 12 cm y radio 9 cm</strong>
+                <p>Catetos 9 y 12. Gira sobre el cateto menor (9). El eje es la altura = 9 cm. El cateto mayor (12 cm) es el radio.</p>
+            </div>
+            <div class="answer-item">
+                <strong>4. Respuesta: (b) 8 cm</strong>
+                <p>Hipotenusa = 10, Cateto = 6. Cateto Mayor = √(10² - 6²) = √(100 - 36) = √64 = 8. La altura del cono es el cateto mayor = 8 cm.</p>
+            </div>
+            <div class="answer-item">
+                <strong>5. Respuesta: (a) 7 cm</strong>
+                <p>Gira sobre el cateto de 24 cm. La altura es 24. El radio es el otro cateto, que mide 7 cm.</p>
+            </div>
+            <div class="answer-item">
+                <strong>6. Respuesta: (a) Altura 5 cm y radio 5 cm</strong>
+                <p>Triángulo isósceles: catetos iguales (5 cm). Al girar sobre uno de ellos, la altura es ese cateto (5 cm) y el radio es el otro cateto (5 cm).</p>
+            </div>
+            <div class="answer-item">
+                <strong>7. Respuesta: (b) 8 cm</strong>
+                <p>Hipotenusa = 17, Cateto = 8. Cateto Mayor = √(17² - 8²) = √(289 - 64) = √225 = 15. Gira sobre el mayor (15). El radio es el cateto menor = 8 cm.</p>
+            </div>
+            <div class="answer-item">
+                <strong>8. Respuesta: (b) Un cono de altura 3 cm y radio 4 cm</strong>
+                <p>Gira sobre el cateto de 3 cm. Altura = 3. Radio = otro cateto = 4.</p>
+            </div>
+            <div class="answer-item">
+                <strong>9. Respuesta: (a) 1 cm</strong>
+                <p>Catetos miden 1 cm. Al girar sobre uno de ellos, la altura es la longitud de ese cateto = 1 cm.</p>
+            </div>
+            <div class="answer-item">
+                <strong>10. Respuesta: (a) Altura 12 cm</strong>
+                <p>Al girar sobre la hipotenusa, la altura de los conos es la altura del triángulo respecto a la hipotenusa. Área = (15*20)/2 = 150. Hipotenusa = 25. Altura = (2*Área)/Hip = 300/25 = 12 cm.</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-size: 12px; color: #7f8c8d;">
+            Generado para práctica de Razonamiento Cuantitativo - Universidad de Antioquia
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

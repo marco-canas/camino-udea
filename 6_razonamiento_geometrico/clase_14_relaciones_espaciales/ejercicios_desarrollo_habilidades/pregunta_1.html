@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Sucesiones y Patrones Geométricos - PDF</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-strategy: #fdf2e9;
+            --border-strategy: #e67e22;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Contenedor principal simulando hoja A4 */
+        .page-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        /* Encabezado */
+        header {
+            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            text-align: right;
+        }
+
+        header h1 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #7f8c8d;
+            margin: 0;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* Sección de Estrategia */
+        .strategy-box {
+            background-color: var(--bg-strategy);
+            border-left: 5px solid var(--border-strategy);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 4px;
+            page-break-inside: avoid;
+        }
+
+        .strategy-box h2 {
+            font-family: sans-serif;
+            font-size: 18px;
+            color: var(--border-strategy);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .strategy-box p {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: #fff;
+            padding: 5px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        /* Estilos de los Ejercicios */
+        .exercise {
+            margin-bottom: 50px;
+            page-break-inside: avoid;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 20px;
+        }
+
+        .exercise:last-child {
+            border-bottom: none;
+        }
+
+        .question-text {
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .question-number {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-right: 5px;
+        }
+
+        /* Contenedor de imagen y opciones */
+        .content-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .image-container {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            justify-content: center;
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .options-container {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .option {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+            cursor: default;
+        }
+
+        .option-letter {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-right: 8px;
+        }
+
+        /* Estilos para la hoja de respuestas */
+        .answers-section {
+            page-break-before: always;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border: 1px solid #ddd;
+            margin-top: 50px;
+        }
+
+        .answers-section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .answer-key {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .answer-item {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-color);
+            font-size: 14px;
+        }
+
+        .answer-item strong {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        /* SVG Styles */
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .shape-line {
+            fill: none;
+            stroke: #2c3e50;
+            stroke-width: 1.5;
+        }
+        
+        .axis-line {
+            stroke: #e74c3c;
+            stroke-width: 1;
+            stroke-dasharray: 4;
+        }
+
+        .measure-text {
+            font-family: sans-serif;
+            font-size: 11px;
+            fill: #2c3e50;
+            font-weight: bold;
+        }
+
+        /* Estilos de impresión */
+        @media print {
+            body { 
+                background: white; 
+                padding: 0;
+            }
+            .page-container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+                padding: 0.5cm;
+            }
+            .strategy-box {
+                background-color: #fff8e1 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .answers-section {
+                background-color: #f4f4f4 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+    <header>
+        <h1>Universidad de Antioquia - Razonamiento Cuantitativo</h1>
+    </header>
+
+    <!-- ESTRATEGIA -->
+    <div class="strategy-box">
+        <h2>💡 Estrategia: Sucesiones Aritméticas</h2>
+        <p>
+            Para resolver problemas de figuras que siguen una ley de formación, primero debes identificar cómo cambia la cantidad de elementos (triángulos, cuadrados, líneas) de una figura a otra.
+        </p>
+        <p>
+            Si la diferencia entre una figura y la siguiente es <strong>constante</strong>, estás ante una <strong>sucesión aritmética</strong>. La fórmula general para encontrar el término enésimo (Figura n) es:
+        </p>
+        <div style="text-align: center; margin-top: 10px;">
+            <span class="formula">aₙ = a₁ + (n - 1) × d</span>
+        </div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+            Donde <strong>a₁</strong> es el primer término (Figura 1), <strong>n</strong> es el número de la figura que buscas y <strong>d</strong> es la diferencia constante (razón).
+        </p>
+    </div>
+
+    <!-- EJERCICIO 1 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">1.</span> Las siguientes figuras se han construido de acuerdo con una ley de formación. El número total de triángulos que presenta la Figura 10 es:
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="250" height="80" viewBox="0 0 250 80">
+                    <!-- Fig 1 -->
+                    <rect x="10" y="20" width="40" height="40" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="25" y="75" font-size="10">(1) 0 tri</text>
+                    
+                    <!-- Fig 2 -->
+                    <rect x="70" y="20" width="40" height="40" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <polygon points="70,20 90,40 110,20" fill="none" stroke="#2c3e50" stroke-width="1"/>
+                    <polygon points="70,60 90,40 110,60" fill="none" stroke="#2c3e50" stroke-width="1"/>
+                    <text x="80" y="75" font-size="10">(2) 4 tri</text>
+
+                    <!-- Fig 3 -->
+                    <rect x="130" y="20" width="40" height="40" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <polygon points="130,20 150,40 170,20" fill="none" stroke="#2c3e50" stroke-width="1"/>
+                    <polygon points="130,60 150,40 170,60" fill="none" stroke="#2c3e50" stroke-width="1"/>
+                    <rect x="140" y="30" width="20" height="20" fill="none" stroke="#2c3e50" stroke-width="1"/>
+                    <text x="140" y="75" font-size="10">(3) 8 tri</text>
+                    
+                    <!-- ... -->
+                    <text x="190" y="45" font-size="20">...</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 32</label>
+                <label class="option"><span class="option-letter">(b)</span> 36</label>
+                <label class="option"><span class="option-letter">(c)</span> 40</label>
+                <label class="option"><span class="option-letter">(d)</span> 48</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 2 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">2.</span> Observe la secuencia de cuadrados. Si el patrón continúa, ¿cuántos cuadrados pequeños tendrá la Figura 8?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="250" height="80" viewBox="0 0 250 80">
+                    <!-- Fig 1: 1 cuadrado -->
+                    <rect x="10" y="20" width="30" height="30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="15" y="75" font-size="10">(1) 1</text>
+                    
+                    <!-- Fig 2: 4 cuadrados (2x2) -->
+                    <rect x="70" y="20" width="30" height="30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="85" y1="20" x2="85" y2="50" stroke="#2c3e50" stroke-width="1"/>
+                    <line x1="70" y1="35" x2="100" y2="35" stroke="#2c3e50" stroke-width="1"/>
+                    <text x="75" y="75" font-size="10">(2) 4</text>
+
+                    <!-- Fig 3: 9 cuadrados (3x3) -->
+                    <rect x="130" y="20" width="30" height="30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="140" y1="20" x2="140" y2="50" stroke="#2c3e50" stroke-width="1"/>
+                    <line x1="150" y1="20" x2="150" y2="50" stroke="#2c3e50" stroke-width="1"/>
+                    <line x1="130" y1="30" x2="160" y2="30" stroke="#2c3e50" stroke-width="1"/>
+                    <line x1="130" y1="40" x2="160" y2="40" stroke="#2c3e50" stroke-width="1"/>
+                    <text x="140" y="75" font-size="10">(3) 9</text>
+                    
+                    <text x="190" y="45" font-size="20">...</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 16</label>
+                <label class="option"><span class="option-letter">(b)</span> 25</label>
+                <label class="option"><span class="option-letter">(c)</span> 36</label>
+                <label class="option"><span class="option-letter">(d)</span> 64</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 3 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">3.</span> En la siguiente secuencia, cada figura se forma añadiendo un triángulo. ¿Cuántos triángulos tendrá la Figura 12?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="250" height="80" viewBox="0 0 250 80">
+                    <!-- Fig 1: 1 triangulo -->
+                    <polygon points="30,50 20,30 40,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="15" y="75" font-size="10">(1) 1</text>
+                    
+                    <!-- Fig 2: 2 triangulos -->
+                    <polygon points="70,50 60,30 80,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <polygon points="90,50 80,30 100,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="75" y="75" font-size="10">(2) 2</text>
+
+                    <!-- Fig 3: 3 triangulos -->
+                    <polygon points="130,50 120,30 140,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <polygon points="150,50 140,30 160,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <polygon points="170,50 160,30 180,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="140" y="75" font-size="10">(3) 3</text>
+                    
+                    <text x="200" y="45" font-size="20">...</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 10</label>
+                <label class="option"><span class="option-letter">(b)</span> 11</label>
+                <label class="option"><span class="option-letter">(c)</span> 12</label>
+                <label class="option"><span class="option-letter">(d)</span> 13</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 4 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">4.</span> Las figuras muestran una sucesión de polígonos. Si el patrón se mantiene, ¿cuántos lados tendrá la Figura 7?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="250" height="80" viewBox="0 0 250 80">
+                    <!-- Fig 1: Triangulo (3 lados) -->
+                    <polygon points="30,50 20,30 40,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="15" y="75" font-size="10">(1) 3 lados</text>
+                    
+                    <!-- Fig 2: Cuadrado (4 lados) -->
+                    <rect x="70" y="30" width="30" height="30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="75" y="75" font-size="10">(2) 4 lados</text>
+
+                    <!-- Fig 3: Pentagono (5 lados) -->
+                    <polygon points="140,30 160,30 170,50 150,60 130,50" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="135" y="75" font-size="10">(3) 5 lados</text>
+                    
+                    <text x="200" y="45" font-size="20">...</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 6</label>
+                <label class="option"><span class="option-letter">(b)</span> 7</label>
+                <label class="option"><span class="option-letter">(c)</span> 8</label>
+                <label class="option"><span class="option-letter">(d)</span> 9</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 5 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">5.</span> Observe la secuencia de puntos. ¿Cuántos puntos tendrá la Figura 10?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="250" height="80" viewBox="0 0 250 80">
+                    <!-- Fig 1: 1 punto -->
+                    <circle cx="25" cy="40" r="3" fill="#e74c3c"/>
+                    <text x="20" y="75" font-size="10">(1) 1</text>
+                    
+                    <!-- Fig 2: 3 puntos -->
+                    <circle cx="75" cy="40" r="3" fill="#e74c3c"/>
+                    <circle cx="85" cy="40" r="3" fill="#e74c3c"/>
+                    <circle cx="80" cy="30" r="3" fill="#e74c3c"/>
+                    <text x="75" y="75" font-size="10">(2) 3</text>
+
+                    <!-- Fig 3: 6 puntos -->
+                    <circle cx="135" cy="45" r="3" fill="#e74c3c"/>
+                    <circle cx="145" cy="45" r="3" fill="#e74c3c"/>
+                    <circle cx="155" cy="45" r="3" fill="#e74c3c"/>
+                    <circle cx="140" cy="35" r="3" fill="#e74c3c"/>
+                    <circle cx="150" cy="35" r="3" fill="#e74c3c"/>
+                    <circle cx="145" cy="25" r="3" fill="#e74c3c"/>
+                    <text x="135" y="75" font-size="10">(3) 6</text>
+                    
+                    <text x="200" y="45" font-size="20">...</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 45</label>
+                <label class="option"><span class="option-letter">(b)</span> 50</label>
+                <label class="option"><span class="option-letter">(c)</span> 55</label>
+                <label class="option"><span class="option-letter">(d)</span> 60</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 6 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">6.</span> Las figuras están formadas por palitos de fósforo. ¿Cuántos palitos se necesitan para formar la Figura 6?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="250" height="80" viewBox="0 0 250 80">
+                    <!-- Fig 1: 1 cuadrado (4 palitos) -->
+                    <rect x="10" y="25" width="30" height="30" fill="none" stroke="#2c3e50" stroke-width="3"/>
+                    <text x="15" y="75" font-size="10">(1) 4 palitos</text>
+                    
+                    <!-- Fig 2: 2 cuadrados (7 palitos) -->
+                    <rect x="70" y="25" width="30" height="30" fill="none" stroke="#2c3e50" stroke-width="3"/>
+                    <rect x="100" y="25" width="30" height="30" fill="none" stroke="#2c3e50" stroke-width="3"/>
+                    <text x="75" y="75" font-size="10">(2) 7 palitos</text>
+
+                    <!-- Fig 3: 3 cuadrados (10 palitos) -->
+                    <rect x="150" y="25" width="30" height="30" fill="none" stroke="#2c3e50" stroke-width="3"/>
+                    <rect x="180" y="25" width="30" height="30" fill="none" stroke="#2c3e50" stroke-width="3"/>
+                    <rect x="210" y="25" width="30" height="30" fill="none" stroke="#2c3e50" stroke-width="3"/>
+                    <text x="155" y="75" font-size="10">(3) 10 palitos</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 18</label>
+                <label class="option"><span class="option-letter">(b)</span> 19</label>
+                <label class="option"><span class="option-letter">(c)</span> 20</label>
+                <label class="option"><span class="option-letter">(d)</span> 22</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 7 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">7.</span> En la secuencia, cada figura es un hexágono regular que se divide en triángulos. ¿Cuántos triángulos tendrá la Figura 5?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="250" height="80" viewBox="0 0 250 80">
+                    <!-- Fig 1: Hexagono (6 tri) -->
+                    <polygon points="30,20 45,30 45,50 30,60 15,50 15,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="15" y="75" font-size="10">(1) 6 tri</text>
+                    
+                    <!-- Fig 2: 2 Hexagonos (12 tri) -->
+                    <polygon points="80,20 95,30 95,50 80,60 65,50 65,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <polygon points="105,20 120,30 120,50 105,60 90,50 90,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="75" y="75" font-size="10">(2) 12 tri</text>
+
+                    <!-- Fig 3: 3 Hexagonos (18 tri) -->
+                    <polygon points="140,20 155,30 155,50 140,60 125,50 125,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <polygon points="165,20 180,30 180,50 165,60 150,50 150,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <polygon points="190,20 205,30 205,50 190,60 175,50 175,30" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="145" y="75" font-size="10">(3) 18 tri</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 24</label>
+                <label class="option"><span class="option-letter">(b)</span> 30</label>
+                <label class="option"><span class="option-letter">(c)</span> 36</label>
+                <label class="option"><span class="option-letter">(d)</span> 42</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 8 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">8.</span> Las figuras muestran una sucesión de círculos que aumentan su radio. Si la Figura 1 tiene 1 círculo, la Figura 2 tiene 3, la Figura 3 tiene 6... ¿cuántos círculos tiene la Figura 9?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="250" height="80" viewBox="0 0 250 80">
+                    <!-- Fig 1: 1 circulo -->
+                    <circle cx="30" cy="40" r="10" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="20" y="75" font-size="10">(1) 1</text>
+                    
+                    <!-- Fig 2: 3 circulos (triangulo) -->
+                    <circle cx="80" cy="30" r="10" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <circle cx="70" cy="45" r="10" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <circle cx="90" cy="45" r="10" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="75" y="75" font-size="10">(2) 3</text>
+
+                    <!-- Fig 3: 6 circulos (triangulo mas grande) -->
+                    <circle cx="150" cy="25" r="8" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <circle cx="135" cy="40" r="8" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <circle cx="165" cy="40" r="8" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <circle cx="120" cy="55" r="8" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <circle cx="150" cy="55" r="8" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <circle cx="180" cy="55" r="8" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="135" y="75" font-size="10">(3) 6</text>
+                    
+                    <text x="210" y="45" font-size="20">...</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 36</label>
+                <label class="option"><span class="option-letter">(b)</span> 45</label>
+                <label class="option"><span class="option-letter">(c)</span> 55</label>
+                <label class="option"><span class="option-letter">(d)</span> 66</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 9 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">9.</span> En la secuencia de figuras, cada una se forma añadiendo un cuadrado en la base. ¿Cuántos cuadrados tendrá la Figura 15?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="250" height="80" viewBox="0 0 250 80">
+                    <!-- Fig 1: 1 cuadrado -->
+                    <rect x="20" y="40" width="20" height="20" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="15" y="75" font-size="10">(1) 1</text>
+                    
+                    <!-- Fig 2: 2 cuadrados (apilados) -->
+                    <rect x="70" y="40" width="20" height="20" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <rect x="70" y="20" width="20" height="20" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="70" y="75" font-size="10">(2) 2</text>
+
+                    <!-- Fig 3: 3 cuadrados -->
+                    <rect x="130" y="40" width="20" height="20" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <rect x="130" y="20" width="20" height="20" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <rect x="130" y="0" width="20" height="20" fill="none" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="130" y="75" font-size="10">(3) 3</text>
+                    
+                    <text x="200" y="45" font-size="20">...</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 12</label>
+                <label class="option"><span class="option-letter">(b)</span> 13</label>
+                <label class="option"><span class="option-letter">(c)</span> 14</label>
+                <label class="option"><span class="option-letter">(d)</span> 15</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- EJERCICIO 10 -->
+    <div class="exercise">
+        <div class="question-text">
+            <span class="question-number">10.</span> Las figuras se construyen con líneas rectas. La Figura 1 tiene 2 líneas, la Figura 2 tiene 4, la Figura 3 tiene 6... ¿cuántas líneas tiene la Figura 20?
+        </div>
+        <div class="content-flex">
+            <div class="image-container">
+                <svg width="250" height="80" viewBox="0 0 250 80">
+                    <!-- Fig 1: 2 lineas -->
+                    <line x1="10" y1="30" x2="40" y2="30" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="10" y1="50" x2="40" y2="50" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="15" y="75" font-size="10">(1) 2 lineas</text>
+                    
+                    <!-- Fig 2: 4 lineas -->
+                    <line x1="70" y1="20" x2="100" y2="20" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="70" y1="40" x2="100" y2="40" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="70" y1="60" x2="100" y2="60" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="70" y1="80" x2="100" y2="80" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="75" y="75" font-size="10">(2) 4 lineas</text>
+
+                    <!-- Fig 3: 6 lineas -->
+                    <line x1="130" y1="10" x2="160" y2="10" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="130" y1="25" x2="160" y2="25" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="130" y1="40" x2="160" y2="40" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="130" y1="55" x2="160" y2="55" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="130" y1="70" x2="160" y2="70" stroke="#2c3e50" stroke-width="2"/>
+                    <line x1="130" y1="85" x2="160" y2="85" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="130" y="75" font-size="10">(3) 6 lineas</text>
+                    
+                    <text x="200" y="45" font-size="20">...</text>
+                </svg>
+            </div>
+            <div class="options-container">
+                <label class="option"><span class="option-letter">(a)</span> 20</label>
+                <label class="option"><span class="option-letter">(b)</span> 30</label>
+                <label class="option"><span class="option-letter">(c)</span> 40</label>
+                <label class="option"><span class="option-letter">(d)</span> 42</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESPUESTAS -->
+    <div class="answers-section">
+        <h2>Hoja de Respuestas y Procedimiento</h2>
+        <div class="answer-key">
+            <div class="answer-item">
+                <strong>1. Respuesta: (b) 36</strong>
+                <p>Sucesión: 0, 4, 8, 12... (Diferencia = 4). a₁₀ = 0 + (10 - 1) * 4 = 0 + 36 = 36.</p>
+            </div>
+            <div class="answer-item">
+                <strong>2. Respuesta: (d) 64</strong>
+                <p>Sucesión: 1, 4, 9, 16... (Cuadrados perfectos). aₙ = n². Para n=8, a₈ = 8² = 64.</p>
+            </div>
+            <div class="answer-item">
+                <strong>3. Respuesta: (c) 12</strong>
+                <p>Sucesión: 1, 2, 3, 4... (Diferencia = 1). a₁₂ = 1 + (12 - 1) * 1 = 12.</p>
+            </div>
+            <div class="answer-item">
+                <strong>4. Respuesta: (d) 9</strong>
+                <p>Sucesión de lados: 3, 4, 5, 6... (Diferencia = 1). a₇ = 3 + (7 - 1) * 1 = 9 lados.</p>
+            </div>
+            <div class="answer-item">
+                <strong>5. Respuesta: (c) 55</strong>
+                <p>Sucesión: 1, 3, 6, 10... (Números triangulares). aₙ = n(n+1)/2. Para n=10: 10*11/2 = 55.</p>
+            </div>
+            <div class="answer-item">
+                <strong>6. Respuesta: (b) 19</strong>
+                <p>Sucesión: 4, 7, 10... (Diferencia = 3). a₆ = 4 + (6 - 1) * 3 = 4 + 15 = 19 palitos.</p>
+            </div>
+            <div class="answer-item">
+                <strong>7. Respuesta: (b) 30</strong>
+                <p>Sucesión: 6, 12, 18... (Diferencia = 6). a₅ = 6 + (5 - 1) * 6 = 6 + 24 = 30 triángulos.</p>
+            </div>
+            <div class="answer-item">
+                <strong>8. Respuesta: (b) 45</strong>
+                <p>Sucesión: 1, 3, 6, 10... (Números triangulares). a₉ = 9*10/2 = 45 círculos.</p>
+            </div>
+            <div class="answer-item">
+                <strong>9. Respuesta: (d) 15</strong>
+                <p>Sucesión: 1, 2, 3, 4... (Diferencia = 1). a₁₅ = 15 cuadrados.</p>
+            </div>
+            <div class="answer-item">
+                <strong>10. Respuesta: (c) 40</strong>
+                <p>Sucesión: 2, 4, 6, 8... (Diferencia = 2). a₂₀ = 2 + (20 - 1) * 2 = 2 + 38 = 40 líneas.</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-size: 12px; color: #7f8c8d;">
+            Generado para práctica de Razonamiento Cuantitativo - Universidad de Antioquia
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
